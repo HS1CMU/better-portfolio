@@ -221,4 +221,24 @@ export const Icons = {
       />
     </svg>
   ),
+  halloween: (props: IconProps) => (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <title>Halloween</title>
+      <path d="M12 3c-3.5 0-6.5 2-8 5-1 2-1 4 0 6 1.5 3 4.5 5 8 5s6.5-2 8-5c1-2 1-4 0-6-1.5-3-4.5-5-8-5z" />
+      <path d="M8 11l1-1 1 1M14 11l1-1 1 1" />
+      <path d="M8 15h8" />
+      <path d="M8 15c0 1 .5 2 1.5 2.5M16 15c0 1-.5 2-1.5 2.5" />
+      <path d="M12 2v2" />
+      <path d="M11 3l-1-1M13 3l1-1" />
+    </svg>
+  ),
 };

@@ -80,7 +80,7 @@ export const DATA = {
       start: "Oct 2024",
       end: "Jan 2025",
       description:
-        "Developed AdaSeg4MR, an agentic system for speech-guided instance segmentation in MR using YOLOv11, LLaMA3 and Unity, enabling egocentric interaction across tasks: locating, segmenting, counting, and reasoning with class alignment. Engineered key components including adversary examinators and HTML auto-generation for result visualization.",
+        "Developed an agentic system for speech-guided instance segmentation in MR using YOLOv11, LLaMA3 and Unity, enabling egocentric interaction across tasks: locating, segmenting, counting, and reasoning with class alignment. Engineered key components including adversary examinators and HTML auto-generation for result visualization.",
     },
     {
       company: "FateAlgo Ltd",
@@ -167,6 +167,34 @@ export const DATA = {
   ],
   projects: [
     {
+      title: "Agents that rob the Louvre",
+      href: "https://www.anyfend.com/",
+      dates: "November 2025",
+      active: true,
+      description:
+        "Anyfend is an army of multimodal agents that simulate robbery and find the best preventive solutions in every scenario.",
+      technologies: [
+        "AI SDK",
+        "Three.js",
+        "YOLOv11",
+        "Llama 4 Vision",
+        "RL",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://www.anyfend.com/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Halloween",
+          href: "https://x.com/Heath_Sun/status/1984472445005545991",
+          icon: <Icons.halloween className="size-3" />,
+        },
+      ],
+      image: "/anyfend.gif",
+    },
+    {
       title: "One Click to Grade Them All",
       href: "/blog/1CGA",
       dates: "June 2025",
@@ -193,6 +221,35 @@ export const DATA = {
         },
       ],
       image: "/1CGA-Cover.gif",
+    },
+    {
+      title: "Can AI judge hackathons?",
+      href: "https://github.com/HeathSun/a42z-Judge",
+      dates: "August 2025",
+      active: true,
+      description:
+        "Agentic AI hackathon judge. Runner-up at AdventureX, China's largest-ever hackathon, selected from over 8,000 applicants.",
+      technologies: [
+        "Next.js",
+        "Pinecone",
+        "Dify",
+        "Apify",
+        "Perplexity",
+        "Groq"
+      ],
+      links: [
+        {
+          type: "Source",
+          href: "https://github.com/HeathSun/a42z-Judge",
+          icon: <Icons.github className="size-3" />,
+        },
+        {
+          type: "Website",
+          href: "https://judge.a42z.ai/",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/a42z-judge.gif",
     },
     {
       title: "Mysticism in the Age of AI",

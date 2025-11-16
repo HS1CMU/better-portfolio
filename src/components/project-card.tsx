@@ -67,6 +67,7 @@ export function ProjectCard({
             width={500}
             height={300}
             className="h-40 w-full overflow-hidden object-cover object-top"
+            unoptimized={image.endsWith('.gif')}
           />
         )}
       </Link>
@@ -77,7 +78,7 @@ export function ProjectCard({
           <div className="hidden font-sans text-xs underline print:visible">
             {link?.replace("https://", "").replace("www.", "").replace("/", "")}
           </div>
-          <Markdown className="prose max-w-full text-pretty font-sans text-xs text-muted-foreground dark:prose-invert">
+          <Markdown className="prose max-w-full font-sans text-xs text-muted-foreground dark:prose-invert">
             {description}
           </Markdown>
         </div>
