@@ -172,7 +172,7 @@ export const DATA = {
       dates: "November 2025",
       active: true,
       description:
-        "Anyfend is an army of multimodal agents that simulate robbery and find the best preventive solutions in every scenario.",
+        "An army of multimodal agents that simulate robbery and find the best preventive solutions in every scenario.",
       technologies: [
         "AI SDK",
         "Three.js",
