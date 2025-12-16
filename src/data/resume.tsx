@@ -75,12 +75,12 @@ export const DATA = {
       href: "https://tas.ac.uk",
       badges: [],
       location: "Nottingham, UK",
-      title: "Developer · Multimodal AI",
+      title: "Research Engineer · Multimodal AI",
       logoUrl: "/TAS.png",
       start: "Oct 2024",
       end: "Jan 2025",
       description:
-        "Developed an agentic system for speech-guided instance segmentation in MR using YOLOv11, LLaMA3 and Unity, enabling egocentric interaction across tasks: locating, segmenting, counting, and reasoning with class alignment. Engineered key components including adversary examinators and HTML auto-generation for result visualization.",
+        "Worked on an agentic system for speech-guided instance segmentation in MR, enabling egocentric interaction across tasks: locating, segmenting, counting, and reasoning with class alignment. Engineered key components including adversary examinators and HTML auto-generation for result visualization.",
     },
     {
       company: "FateAlgo Ltd",
@@ -99,12 +99,12 @@ export const DATA = {
       href: "https://www.chinamobile.com",
       badges: [],
       location: "Beijing, China",
-      title: "AI Product Manager (Management Trainee Lead)",
+      title: "AI Product Engineer (Management Trainee Lead)",
       logoUrl: "/china-mobile.png",
       start: "Jun 2024",
       end: "Aug 2024",
       description:
-        "Led a six-member team to develop a multi-agent workflow platform demo for China Mobile, based on LangChain. Successfully delivered the platform demo with a digital human front-end that helped the company win the bid. Advised the AI biography project for the Islamic world in collaboration with AceGPT (No.1 Arabic LLM) and KAUST.",
+        "Led a six-member team to develop a multi-agent workflow platform demo for China Mobile. Successfully delivered the platform demo with a digital human front-end that helped the company win the bid. Advised the AI biography project for the Islamic world in collaboration with AceGPT (No.1 Arabic LLM) and KAUST.",
     },
     {
       company: "Zhejiang University",
