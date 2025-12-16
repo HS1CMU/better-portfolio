@@ -41,14 +41,14 @@ export const DATA = {
       },
       X: {
         name: "X",
-        url: "https://x.com/Heath_Sun",
+        url: "https://x.com/1HeathSun",
         icon: Icons.x,
 
         navbar: true,
       },
       GitHub: {
         name: "GitHub",
-        url: "https://github.com/HeathSun",
+        url: "https://github.com/HS1CMU",
         icon: Icons.github,
 
         navbar: true,
@@ -188,7 +188,7 @@ export const DATA = {
         },
         {
           type: "Halloween",
-          href: "https://x.com/Heath_Sun/status/1984472445005545991",
+          href: "https://x.com/1HeathSun/status/1984472445005545991",
           icon: <Icons.halloween className="size-3" />,
         },
       ],
@@ -224,7 +224,7 @@ export const DATA = {
     },
     {
       title: "Can AI judge hackathons?",
-      href: "https://github.com/HeathSun/a42z-Judge",
+      href: "https://github.com/HS1CMU/a42z-Judge",
       dates: "August 2025",
       active: true,
       description:
@@ -240,7 +240,7 @@ export const DATA = {
       links: [
         {
           type: "Source",
-          href: "https://github.com/HeathSun/a42z-Judge",
+          href: "https://github.com/HS1CMU/a42z-Judge",
           icon: <Icons.github className="size-3" />,
         },
         {
