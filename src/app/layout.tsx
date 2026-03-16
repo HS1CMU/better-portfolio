@@ -5,7 +5,7 @@ import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import localFont from "next/font/local";
 import type { Metadata } from "next";
-import { IBM_Plex_Mono as FontMono, Playfair_Display as FontSerif } from "next/font/google";
+import { Playfair_Display as FontSerif } from "next/font/google";
 import "katex/dist/katex.min.css";
 import "./globals.css";
 
@@ -21,10 +21,19 @@ const fontHeadline = localFont({
   display: "swap",
 });
 
-const fontMono = FontMono({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+const fontMono = localFont({
+  src: [
+    { path: "../../public/SFMono-Regular.otf",      weight: "400", style: "normal" },
+    { path: "../../public/SFMono-RegularItalic.otf", weight: "400", style: "italic" },
+    { path: "../../public/SFMono-Medium.otf",        weight: "500", style: "normal" },
+    { path: "../../public/SFMono-MediumItalic.otf",  weight: "500", style: "italic" },
+    { path: "../../public/SFMono-Semibold.otf",      weight: "600", style: "normal" },
+    { path: "../../public/SFMono-SemiboldItalic.otf",weight: "600", style: "italic" },
+    { path: "../../public/SFMono-Bold.otf",          weight: "700", style: "normal" },
+    { path: "../../public/SFMono-BoldItalic.otf",    weight: "700", style: "italic" },
+  ],
   variable: "--font-mono",
+  display: "swap",
 });
 
 const fontSerif = FontSerif({
