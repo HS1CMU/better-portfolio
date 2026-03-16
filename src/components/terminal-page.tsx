@@ -1089,8 +1089,9 @@ function DemoButton({
   projectId: string; onOpen: (p: typeof PROJECTS[0]) => void;
 }) {
   const proj = PROJECTS.find(p => p.id === projectId);
+  if (!proj) return null;
   const hasSecond = "secondUrl" in proj && proj.secondUrl;
-  if (!proj || (!proj.liveUrl && !proj.videoUrl && !hasSecond)) return null;
+  if (!proj.liveUrl && !proj.videoUrl && !hasSecond) return null;
   const linkCls = "border border-white/25 px-3 py-1 text-xs text-white/70 transition-colors cursor-pointer";
   const onEnter = (e: React.MouseEvent<HTMLElement>) => { e.currentTarget.style.borderColor = ACCENT; e.currentTarget.style.color = ACCENT; };
   const onLeave = (e: React.MouseEvent<HTMLElement>) => { e.currentTarget.style.borderColor = ""; e.currentTarget.style.color = ""; };
