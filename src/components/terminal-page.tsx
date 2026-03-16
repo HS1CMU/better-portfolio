@@ -51,7 +51,7 @@ const PROJECTS = [
       "voiceover narration (ElevenLabs + LiveKit) into a complete travel film.",
     liveUrl: "https://x.com/1HeathSun/status/2031168052520477150",
     liveLabel: "X Post",
-    secondUrl: "https://heathsun.dev/Travel-Rewind.pdf",
+    secondUrl: "https://assets.heathsun.dev/Travel-Rewind.pdf",
     secondLabel: "Deck",
     videoUrl: null,
     image: null,
@@ -210,7 +210,7 @@ const PROJECTS = [
     tagline: "World's first AI-native Tarot app — $60K fellowship, ZhenFund",
     stack: "Java Spring Boot · Vue.js · uni-app · GPT API · RAG · Figma",
     status: "Shut down → pivoted to AI agent consulting",
-    image: "https://heathsun.dev/Tarot.gif",
+    image: "https://assets.heathsun.dev/Tarot.gif",
     description:
       "WHAT I BUILT\n" +
       "Architected a dynamic divination engine integrating GPT API and RAG\n" +
@@ -719,7 +719,7 @@ export default function TerminalPage({ nameAscii }: { nameAscii: string }) {
             mk.rich(
               <div className="my-2 ml-2">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!4v1710000000000!6m8!1m7!1sxKIpTH5T9qHrHuKZGvX9oA!2m2!1d37.3936759!2d-122.0791116!3f254.04!4f-2.65!5f0.7820865974627469&hl=en"
+                  src="https://www.google.com/maps/embed?hl=en&pb=!4v1710000000000!6m8!1m7!1sxKIpTH5T9qHrHuKZGvX9oA!2m2!1d37.3936759!2d-122.0791116!3f254.04!4f-2.65!5f0.7820865974627469"
                   className="w-full max-w-[480px] h-[280px] rounded border border-white/10"
                   allowFullScreen
                   loading="lazy"
@@ -1089,9 +1089,8 @@ function DemoButton({
   projectId: string; onOpen: (p: typeof PROJECTS[0]) => void;
 }) {
   const proj = PROJECTS.find(p => p.id === projectId);
-  if (!proj) return null;
   const hasSecond = "secondUrl" in proj && proj.secondUrl;
-  if (!proj.liveUrl && !proj.videoUrl && !hasSecond) return null;
+  if (!proj || (!proj.liveUrl && !proj.videoUrl && !hasSecond)) return null;
   const linkCls = "border border-white/25 px-3 py-1 text-xs text-white/70 transition-colors cursor-pointer";
   const onEnter = (e: React.MouseEvent<HTMLElement>) => { e.currentTarget.style.borderColor = ACCENT; e.currentTarget.style.color = ACCENT; };
   const onLeave = (e: React.MouseEvent<HTMLElement>) => { e.currentTarget.style.borderColor = ""; e.currentTarget.style.color = ""; };
