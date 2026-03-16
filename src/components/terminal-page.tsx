@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState, useCallback, useRef, useMemo } from "react";
+import NextImage from "next/image";
 
 const ACCENT = "#08fff3";
 
@@ -496,10 +497,10 @@ export default function TerminalPage({ nameAscii }: { nameAscii: string }) {
     dir === "~" ? "~" : dir.split("/").pop() ?? "~";
 
   // ── Filesystem helpers ──────────────────────────────────────────────────────
-  const validDirs: Record<string, string[]> = {
+  const validDirs = useMemo<Record<string, string[]>>(() => ({
     "~":                      ["projects"],
     "~/projects":             PROJECTS.map(p => p.id),
-  };
+  }), []);
 
   const isValidDir = (targetCwd: string, name: string) =>
     validDirs[targetCwd]?.includes(name) ?? false;
@@ -1017,10 +1018,13 @@ function HistoryLine({
 
     case "img":
       return (
-        <img
+        <NextImage
           src={line.src}
           alt=""
+          width={480}
+          height={320}
           className="my-2 max-w-[480px] max-h-[320px] w-auto h-auto object-contain rounded border border-white/10"
+          unoptimized
         />
       );
 
