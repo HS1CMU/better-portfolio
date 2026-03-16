@@ -376,12 +376,14 @@ type TLine =
   | { k: "text";     text: string; dim?: boolean }
   | { k: "cmd";      dir: string; cmd: string }
   | { k: "blank" }
-  | { k: "ls-root" }
+  | { k: "ls-root"; showHidden?: boolean }
   | { k: "ls-projects" }
   | { k: "kv";       key: string; value: string }
   | { k: "demo";     projId: string }
   | { k: "ascii";    src: string; cols: number }
   | { k: "img";      src: string }
+  | { k: "rich";     node: React.ReactNode }
+  | { k: "help-row"; cmd: string; desc: string }
   | { k: "brief" }
   | { k: "contrib-graph" };
 
@@ -392,12 +394,14 @@ const mk = {
   t:      (text: string, dim = false): Line => ({ id: ++_uid, k: "text", text, dim }),
   cmd:    (dir: string, cmd: string):  Line => ({ id: ++_uid, k: "cmd", dir, cmd }),
   b:      ():                          Line => ({ id: ++_uid, k: "blank" }),
-  lsRoot: ():                          Line => ({ id: ++_uid, k: "ls-root" }),
+  lsRoot: (showHidden = false):         Line => ({ id: ++_uid, k: "ls-root", showHidden }),
   lsProjects: ():                      Line => ({ id: ++_uid, k: "ls-projects" }),
   kv:     (key: string, val: string):  Line => ({ id: ++_uid, k: "kv", key, value: val }),
   demo:   (projId: string):             Line => ({ id: ++_uid, k: "demo", projId }),
   ascii:  (src: string, cols = 72):    Line => ({ id: ++_uid, k: "ascii", src, cols }),
   img:    (src: string):              Line => ({ id: ++_uid, k: "img", src }),
+  rich:   (node: React.ReactNode):   Line => ({ id: ++_uid, k: "rich", node }),
+  helpRow:(cmd: string, desc: string): Line => ({ id: ++_uid, k: "help-row", cmd, desc }),
   brief:  ():                        Line => ({ id: ++_uid, k: "brief" }),
   contribGraph: ():                  Line => ({ id: ++_uid, k: "contrib-graph" }),
 };
@@ -519,7 +523,7 @@ export default function TerminalPage({ nameAscii }: { nameAscii: string }) {
 
     const options = [
       ...(validDirs[cwd] ?? []).map(d => d + "/"),
-      ...(cwd === "~" ? ["ABOUT_ME.md", "contact_me.sh"] : ["README.md"]),
+      ...(cwd === "~" ? ["ABOUT_ME.md", "contact_me.sh", ".coffee.txt"] : ["README.md"]),
     ];
 
     const matches = options.filter(o => o.startsWith(last));
@@ -560,13 +564,6 @@ export default function TerminalPage({ nameAscii }: { nameAscii: string }) {
       return;
     }
 
-    // ── gui ──
-    if (verb === "gui") {
-      push([mk.t("  > Initializing modern web UI interface..."), mk.b()]);
-      setTimeout(() => window.location.href = "https://heathsun.dev", 1200);
-      return;
-    }
-
     // ── sudo ──
     if (verb === "sudo") {
       push([
@@ -575,7 +572,7 @@ export default function TerminalPage({ nameAscii }: { nameAscii: string }) {
         mk.t("  To unlock 'root' privileges and deploy Heath full-time,"),
         mk.t("  a term sheet or a residency offer is required."),
         mk.b(),
-        mk.t("  Please contact: heathsun@cmu.edu to negotiate access keys."),
+        mk.rich(<>{"  Please contact: "}<a href="mailto:heathsun@cmu.edu" onClick={e => e.stopPropagation()} className="hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>heathsun@cmu.edu</a>{" to negotiate access keys."}</>),
         mk.b(),
       ]);
       return;
@@ -607,15 +604,14 @@ export default function TerminalPage({ nameAscii }: { nameAscii: string }) {
         mk.b(),
         mk.t("  COMMANDS"),
         mk.t("  ─────────────────────────────────────────────"),
-        mk.t("  brief               overview + projects"),
-        mk.t("  whoami              key-value bio"),
-        mk.t("  ls  / ls -la        list directory"),
-        mk.t("  cd  <dir>           change directory"),
-        mk.t("  cat <file>          read file (supports README.md)"),
-        mk.t("  github              ASCII contribution graph"),
-        mk.t("  gui                 open full portfolio site"),
-        mk.t("  sudo                try it"),
-        mk.t("  clear               clear terminal"),
+        mk.helpRow("brief",    "overview + projects"),
+        mk.helpRow("whoami",   "key-value bio"),
+        mk.helpRow("ls -la",   "list directory"),
+        mk.helpRow("cd projects", "change directory"),
+        mk.helpRow("cat .coffee.txt", "find me IRL"),
+        mk.helpRow("github",  "ASCII contribution graph"),
+        mk.helpRow("sudo",    "try it"),
+        mk.helpRow("clear",   "clear terminal"),
         mk.b(),
         mk.t("  [↑ ↓]  history    [tab]  autocomplete", true),
         mk.b(),
@@ -631,8 +627,9 @@ export default function TerminalPage({ nameAscii }: { nameAscii: string }) {
 
     // ── ls ──
     if (verb === "ls") {
+      const showHidden = arg1 === "-la" || arg1 === "-a" || arg1 === "-al";
       if (cwd === "~") {
-        push([mk.b(), mk.lsRoot(), mk.b()]);
+        push([mk.b(), mk.lsRoot(showHidden), mk.b()]);
       } else if (cwd === "~/projects") {
         push([mk.b(), mk.lsProjects(), mk.b()]);
       } else {
@@ -682,28 +679,57 @@ export default function TerminalPage({ nameAscii }: { nameAscii: string }) {
 
       // cat contact_me.sh
       if (arg1 === "contact_me.sh" && cwd === "~") {
-        const text = [
-          "  #!/bin/bash",
-          "  # contact_me.sh",
-          "",
-          '  echo "Opening preferred channels..."',
-          "",
-          "  # X (Twitter)",
-          "  open https://x.com/1HeathSun",
-          "",
-          "  # LinkedIn",
-          "  open https://www.linkedin.com/in/heathsun/",
-          "",
-          "  # GitHub",
-          "  open https://github.com/HS1CMU",
-          "",
-          '  echo "Done."',
+        const linkStyle = { color: ACCENT };
+        const linkCls = "hover:opacity-70 transition-opacity";
+        push([
+          mk.b(),
+          mk.t("  #!/bin/bash"),
+          mk.t("  # contact_me.sh"),
+          mk.b(),
+          mk.t('  echo "Opening preferred channels..."'),
+          mk.b(),
+          mk.t("  # X (Twitter)"),
+          mk.rich(<>{"  open "}<a href="https://x.com/1HeathSun" target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className={linkCls} style={linkStyle}>https://x.com/1HeathSun</a></>),
+          mk.b(),
+          mk.t("  # LinkedIn"),
+          mk.rich(<>{"  open "}<a href="https://www.linkedin.com/in/heathsun/" target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className={linkCls} style={linkStyle}>https://www.linkedin.com/in/heathsun/</a></>),
+          mk.b(),
+          mk.t("  # Email"),
+          mk.rich(<>{"  open "}<a href="mailto:heathsun@cmu.edu" onClick={e => e.stopPropagation()} className={linkCls} style={linkStyle}>heathsun@cmu.edu</a></>),
+          mk.b(),
+          mk.t('  echo "Done."'),
+          mk.b(),
+        ]);
+        return;
+      }
+
+      // cat .coffee.txt
+      if (arg1 === ".coffee.txt" && cwd === "~") {
+        const coffeeText = [
+          "  Here is where you can find me offline, usually highly",
+          "  caffeinated and claudemaxxing:",
         ].join("\n");
         push([mk.b()]);
-        typeText(text, () => {
+        typeText(coffeeText, () => {
+          const linkCls = "hover:opacity-70 transition-opacity";
+          const linkStyle = { color: ACCENT };
           push([
             mk.b(),
-            mk.t("  Click a link to open:"),
+            mk.rich(
+              <div className="my-2 ml-2">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!4v1710000000000!6m8!1m7!1sxKIpTH5T9qHrHuKZGvX9oA!2m2!1d37.3936759!2d-122.0791116!3f254.04!4f-2.65!5f0.7820865974627469&hl=en"
+                  className="w-full max-w-[480px] h-[280px] rounded border border-white/10"
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
+            ),
+            mk.b(),
+            mk.t("  📍 Maison Alyzée, 212 Castro St, Mountain View."),
+            mk.t("  The first coffee and croissant are on me."),
+            mk.rich(<>{"  Hit me up: "}<a href="mailto:heath@cmu.edu" onClick={e => e.stopPropagation()} className={linkCls} style={linkStyle}>heath@cmu.edu</a>{" or DM me on "}<a href="https://x.com/1HeathSun" target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className={linkCls} style={linkStyle}>X</a>{"/"}<a href="https://www.linkedin.com/in/heathsun/" target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className={linkCls} style={linkStyle}>LinkedIn</a>{"."}</>),
             mk.b(),
           ]);
         });
@@ -912,6 +938,24 @@ function HistoryLine({
         </div>
       );
 
+    case "rich":
+      return <div className="whitespace-pre text-white/85">{line.node}</div>;
+
+    case "help-row":
+      return (
+        <div className="flex items-baseline whitespace-pre">
+          <span className="text-white/85">{"  "}</span>
+          <button
+            onClick={e => { e.stopPropagation(); onClickItem(line.cmd); }}
+            className="text-white hover:opacity-70 transition-opacity cursor-pointer shrink-0"
+            style={{ width: "18ch", textAlign: "left" }}
+          >
+            {line.cmd}
+          </button>
+          <span className="text-white/40">{line.desc}</span>
+        </div>
+      );
+
     case "cmd":
       return (
         <div className="flex flex-wrap items-baseline mt-1">
@@ -939,7 +983,11 @@ function HistoryLine({
     case "ls-root":
       return (
         <div className="space-y-1">
-          <LsRow perms="drwxr-xr-x" name="projects/" isDir comment="# The main dish"
+          {line.showHidden && (
+            <LsRow perms="-rw-r--r--" name=".coffee.txt" isDir={false}
+              onClick={() => onClickItem("cat .coffee.txt")} />
+          )}
+          <LsRow perms="drwxr-xr-x" name="projects/" isDir comment=""
             onClick={() => onClickItem("cd projects")} />
           <LsRow perms="-rw-r--r--" name="ABOUT_ME.md" isDir={false}
             onClick={() => onClickItem("cat ABOUT_ME.md")} />
@@ -1099,7 +1147,6 @@ function ContribGraphSection() {
 // ─── Brief section ────────────────────────────────────────────────────────────
 function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
   const ascii = useAsciiMedia("/AI1.jpg", 60, 0.55);
-  const [hintsOpen, setHintsOpen] = useState(false);
   const { data: contribData, total: contribTotal } = useGitHubContribs("HS1CMU");
   const [step, setStep] = useState(0);
   const [hoveredRow, setHoveredRow] = useState<number | null>(null);
@@ -1145,6 +1192,9 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
             <a href="mailto:heathsun@cmu.edu"
                onClick={e => e.stopPropagation()}
                className="hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>heathsun@cmu.edu</a>
+            <button
+               onClick={e => { e.stopPropagation(); onClickItem("cat .coffee.txt"); }}
+               className="hover:opacity-70 transition-opacity cursor-pointer" style={{ color: ACCENT }}>Coffee</button>
           </div>
         </div>
       </div>
@@ -1275,20 +1325,9 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
         </div>
       </div>}
 
-      {/* step 7 — Folded command hints */}
+      {/* step 7 — Command hint */}
       {step >= 7 && <div className="pl-2">
-        <button
-          onClick={e => { e.stopPropagation(); setHintsOpen(h => !h); }}
-          className="text-white/25 hover:text-white/45 cursor-pointer transition-colors"
-        >
-          {hintsOpen ? "▾" : "▸"} more commands...
-        </button>
-        {hintsOpen && (
-          <div className="text-white/20 mt-1 ml-3 space-y-0.5">
-            <div>brief · whoami · ls · cd · cat · github · gui · sudo · clear</div>
-            <div className="text-white/15">[↑ ↓] history   [tab] autocomplete</div>
-          </div>
-        )}
+        <div className="text-white/25">Type &apos;<button onClick={e => { e.stopPropagation(); onClickItem("help"); }} className="text-white hover:opacity-70 transition-opacity cursor-pointer">help</button>&apos; to see more commands...</div>
       </div>}
     </div>
   );
