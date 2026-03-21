@@ -1250,6 +1250,21 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
           <div style={{ color: ACCENT }}>Heath Sun</div>
           <div className="text-white/40 mt-0.5">Mountain View, CA</div>
           <div className="text-white/40">Building AI infrastructure for human communication</div>
+          <div className="h-3" />
+          <div className="space-y-1.5 text-white/80">
+            <div className="text-white/35 text-[11px] tracking-wide font-mono">CURRENT FOCUS</div>
+            <div className="flex gap-2 leading-relaxed items-baseline">
+              <span style={{ color: ACCENT }} className="text-base">→</span>
+              <span>
+                <a href="https://hypercue.ai" target="_blank" rel="noopener noreferrer"
+                   onClick={e => e.stopPropagation()}
+                   className="hover:opacity-70 transition-opacity font-medium" style={{ color: ACCENT }}>
+                  Hypercue
+                </a>
+                <span className="text-white/70">{" — AI for live speaking"}</span>
+              </span>
+            </div>
+          </div>
           <div className="h-4" />
           <div className="text-white/55">CMU (M.S. SM) · Oxford (AI) · Nottingham (B.S. CS)</div>
           <div className="text-white/55">Ex-ZhenFund EIR · Li Dak Sum Research Fellow</div>
@@ -1262,35 +1277,13 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
             <a href="https://www.linkedin.com/in/heathsun/" target="_blank" rel="noopener noreferrer"
                onClick={e => e.stopPropagation()}
                className="hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>LinkedIn</a>
-            <a href="mailto:heathsun@cmu.edu"
-               onClick={e => e.stopPropagation()}
-               className="hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>heathsun@cmu.edu</a>
-            <button
-               onClick={e => { e.stopPropagation(); onClickItem("cat .coffee.txt"); }}
-               className="hover:opacity-70 transition-opacity cursor-pointer" style={{ color: ACCENT }}>Coffee</button>
           </div>
         </div>
       </div>
 
-      {/* step 1 — Current Focus */}
+      {/* step 1 — PREV (formerly highlights) */}
       {step >= 1 && <div className="space-y-1.5 text-white/55 pl-2">
-        <div className="text-white/25 mb-1">CURRENT FOCUS</div>
-        <div className="flex gap-2 leading-relaxed">
-          <span style={{ color: ACCENT }}>→</span>
-          <span>
-            <a href="https://hypercue.ai" target="_blank" rel="noopener noreferrer"
-               onClick={e => e.stopPropagation()}
-               className="hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>
-              Hypercue
-            </a>
-            {" — AI for live speaking"}
-          </span>
-        </div>
-      </div>}
-
-      {/* step 2 — Highlights */}
-      {step >= 2 && <div className="space-y-1.5 text-white/55 pl-2">
-        <div className="text-white/25 mb-1">HIGHLIGHTS</div>
+        <div className="text-white/25 mb-1">PREV</div>
         {[
           <>Built an AI tarot <button onClick={e => { e.stopPropagation(); onClickItem("cat fate_algo_product/README.md"); }} className="underline underline-offset-2 cursor-pointer hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>app</button> at 19 that reached 22K users; later served as the youngest ZhenResident at <a href="https://www.google.com/search?q=what+is+ZhenFund&sca_esv=cf639ee39397d013&rlz=1C5AJCO_enUS1197US1197&sxsrf=ANbL-n5V0xXLpeWDlO_oQkFOx65vcP30xg%3A1773620042917&ei=Sku3adnXN9730PEPhtnI6Q8&biw=1470&bih=835&ved=0ahUKEwjZpP_EkaOTAxXeOzQIHYYsMv0Q4dUDCBE&uact=5&oq=what+is+ZhenFund&gs_lp=Egxnd3Mtd2l6LXNlcnAiEHdoYXQgaXMgWmhlbkZ1bmQyBRAAGO8FMgUQABjvBTIIEAAYgAQYogQyCBAAGIAEGKIEMggQABiABBiiBEjcC1D2AVjeCnABeACQAQCYAZkBoAG3BqoBAzUuM7gBA8gBAPgBAZgCCaAC6AbCAgsQABiABBiwAxiiBMICCBAAGLADGO8FwgIIEAAYgAQYywHCAgcQABiABBgNwgIGEAAYDRgewgIIEAAYChgNGB7CAgUQIRigAcICBxAhGKABGAqYAwCIBgGQBgSSBwM1LjSgB4sWsgcDNC40uAffBsIHBTAuMy42yAcdgAgA&sclient=gws-wiz-serp" target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="underline hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>ZhenFund</a>, China&apos;s leading VC.</>,
           <>Founded <a href="https://www.google.com/search?q=what+is+EuroMCM&rlz=1C5AJCO_enUS1197US1197&oq=what+is+EuroMCM&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIKCAEQABiABBiiBDIKCAIQABiABBiiBDIKCAMQABiABBiiBDIKCAQQABiABBiiBDIHCAUQABjvBdIBCTUzNzFqMGoxNagCCLACAfEFgp7W_KPZtVY&sourceid=chrome&ie=UTF-8" target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="underline hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>EuroMCM</a>, a non-profit pan-European applied mathematics competition, starting from zero budget.</>,
@@ -1305,16 +1298,16 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
         ))}
       </div>}
 
-      {/* step 3 — GitHub contribution graph */}
-      {step >= 3 && <div className="space-y-2">
+      {/* step 2 — GitHub contribution graph */}
+      {step >= 2 && <div className="space-y-2">
         <div className="text-white/30">
           {"  "}@HS1CMU
         </div>
         <div className="pl-2"><ContribGraph data={contribData} /></div>
       </div>}
 
-      {/* step 4 — Fun Projects */}
-      {step >= 4 && <div>
+      {/* step 3 — Fun Projects */}
+      {step >= 3 && <div>
         <div className="text-white/10 mb-2">  ─────────────────────────────────────────────────────────────</div>
         <div className="text-white/30 mb-1">  FUN PROJECTS</div>
         <div className="space-y-0.5 pl-2" onMouseLeave={() => setHoveredRow(null)}>
@@ -1349,8 +1342,8 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
         </div>
       </div>}
 
-      {/* step 5 — Essays */}
-      {step >= 5 && <div onMouseLeave={() => setHoveredRow(null)}>
+      {/* step 4 — Essays */}
+      {step >= 4 && <div onMouseLeave={() => setHoveredRow(null)}>
         <div className="text-white/30 mb-1">  ESSAYS</div>
         <div className="space-y-1 pl-2">
           <div className="flex gap-2 leading-relaxed"
@@ -1424,8 +1417,8 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
         </div>
       </div>}
 
-      {/* step 6 — Arts */}
-      {step >= 6 && <div onMouseLeave={() => setHoveredRow(null)}>
+      {/* step 5 — Arts */}
+      {step >= 5 && <div onMouseLeave={() => setHoveredRow(null)}>
         <div className="text-white/30 mb-1">  ARTS</div>
         <div className="space-y-1 pl-2">
           <div className="flex gap-2 leading-relaxed"
@@ -1446,6 +1439,17 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
             </span>
           </div>
         </div>
+      </div>}
+
+      {/* step 6 — Email & Coffee (below Arts) */}
+      {step >= 6 && <div className="pl-2 flex flex-wrap gap-x-4 gap-y-1 text-white/70">
+        <a href="mailto:heathsun@cmu.edu"
+           onClick={e => e.stopPropagation()}
+           className="hover:opacity-70 transition-opacity font-mono" style={{ color: ACCENT }}>heathsun@cmu.edu</a>
+        <button
+          type="button"
+          onClick={e => { e.stopPropagation(); onClickItem("cat .coffee.txt"); }}
+          className="hover:opacity-70 transition-opacity cursor-pointer font-mono" style={{ color: ACCENT }}>Coffee</button>
       </div>}
 
       {/* step 7 — Command hint */}
