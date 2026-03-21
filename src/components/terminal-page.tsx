@@ -1365,13 +1365,12 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
                 : <span className="text-white/25">·</span>}
             </span>
             <span>
-              <a href="https://www.heathsun.dev/blog/mysticism" target="_blank" rel="noopener noreferrer"
+              <a href="https://www.heathsun.dev/blog/ideas" target="_blank" rel="noopener noreferrer"
                  onClick={e => e.stopPropagation()}
                  className="hover:opacity-70 transition-opacity text-white/70">
-                <span className="text-white">Mysticism in the Age of AI:</span>
-                {" How to Quantitatively Compare Divination Systems?"}
+                <span className="text-white">Ideas Are More Important Than Execution</span>
               </a>
-              <span className="text-white/40">{" (2022)"}</span>
+              <span className="text-white/40">{" (2026)"}</span>
             </span>
           </div>
           <div className="flex gap-2 leading-relaxed"
@@ -1383,10 +1382,10 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
                 : <span className="text-white/25">·</span>}
             </span>
             <span>
-              <a href="https://www.heathsun.dev/blog/ideas" target="_blank" rel="noopener noreferrer"
+              <a href="https://www.heathsun.dev/blog/middle-layer" target="_blank" rel="noopener noreferrer"
                  onClick={e => e.stopPropagation()}
                  className="hover:opacity-70 transition-opacity text-white/70">
-                <span className="text-white">Ideas Are More Important Than Execution</span>
+                <span className="text-white">The Middle Layer Has No Moat</span>
               </a>
               <span className="text-white/40">{" (2026)"}</span>
             </span>
@@ -1417,12 +1416,13 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
                 : <span className="text-white/25">·</span>}
             </span>
             <span>
-              <a href="https://www.heathsun.dev/blog/middle-layer" target="_blank" rel="noopener noreferrer"
+              <a href="https://www.heathsun.dev/blog/mysticism" target="_blank" rel="noopener noreferrer"
                  onClick={e => e.stopPropagation()}
                  className="hover:opacity-70 transition-opacity text-white/70">
-                <span className="text-white">The Middle Layer Has No Moat</span>
+                <span className="text-white">Mysticism in the Age of AI:</span>
+                {" How to Quantitatively Compare Divination Systems?"}
               </a>
-              <span className="text-white/40">{" (2026)"}</span>
+              <span className="text-white/40">{" (2022)"}</span>
             </span>
           </div>
         </div>
