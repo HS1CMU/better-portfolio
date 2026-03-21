@@ -1228,7 +1228,7 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
   const [hoveredRow, setHoveredRow] = useState<number | null>(null);
   const activeRow = hoveredRow ?? 0;
   useEffect(() => {
-    if (step >= 7) return;
+    if (step >= 6) return;
     const id = setTimeout(() => setStep(s => s + 1), 45);
     return () => clearTimeout(id);
   }, [step]);
@@ -1270,13 +1270,31 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
           <div className="text-white/55">Ex-ZhenFund EIR · Li Dak Sum Research Fellow</div>
           <div className="text-white/55"></div>
           <div className="h-4" />
-          <div className="flex gap-4">
-            <a href="https://x.com/1HeathSun" target="_blank" rel="noopener noreferrer"
-               onClick={e => e.stopPropagation()}
-               className="hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>X</a>
+          {/* Primary funnel: LinkedIn (who I am) + Coffee (talk to me); X + email are secondary */}
+          <div className="flex items-center justify-between gap-3 w-full max-w-xl min-w-0 flex-wrap">
             <a href="https://www.linkedin.com/in/heathsun/" target="_blank" rel="noopener noreferrer"
                onClick={e => e.stopPropagation()}
-               className="hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>LinkedIn</a>
+               className="shrink-0 font-mono text-white font-medium hover:opacity-90 transition-opacity">
+              LinkedIn
+            </a>
+            <div className="flex items-center gap-4 text-white/30 font-mono">
+              <a href="https://x.com/1HeathSun" target="_blank" rel="noopener noreferrer"
+                 onClick={e => e.stopPropagation()}
+                 className="hover:text-white/45 transition-colors">
+                X
+              </a>
+              <a href="mailto:heathsun@cmu.edu"
+                 onClick={e => e.stopPropagation()}
+                 className="hover:text-white/45 transition-colors truncate max-w-[min(100%,11rem)]">
+                heathsun@cmu.edu
+              </a>
+            </div>
+            <button
+              type="button"
+              onClick={e => { e.stopPropagation(); onClickItem("cat .coffee.txt"); }}
+              className="shrink-0 font-mono text-white font-medium hover:opacity-90 transition-opacity cursor-pointer bg-transparent border-0 p-0">
+              Coffee
+            </button>
           </div>
         </div>
       </div>
@@ -1441,19 +1459,8 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
         </div>
       </div>}
 
-      {/* step 6 — Email & Coffee (below Arts) */}
-      {step >= 6 && <div className="pl-2 flex flex-wrap gap-x-4 gap-y-1 text-white/70">
-        <a href="mailto:heathsun@cmu.edu"
-           onClick={e => e.stopPropagation()}
-           className="hover:opacity-70 transition-opacity font-mono" style={{ color: ACCENT }}>heathsun@cmu.edu</a>
-        <button
-          type="button"
-          onClick={e => { e.stopPropagation(); onClickItem("cat .coffee.txt"); }}
-          className="hover:opacity-70 transition-opacity cursor-pointer font-mono" style={{ color: ACCENT }}>Coffee</button>
-      </div>}
-
-      {/* step 7 — Command hint */}
-      {step >= 7 && <div className="pl-2">
+      {/* step 6 — Command hint */}
+      {step >= 6 && <div className="pl-2">
         <div className="text-white/25">Type &apos;<button onClick={e => { e.stopPropagation(); onClickItem("help"); }} className="text-white hover:opacity-70 transition-opacity cursor-pointer">help</button>&apos; to see more commands...</div>
       </div>}
     </div>
