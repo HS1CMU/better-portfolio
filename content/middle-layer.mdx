@@ -1,7 +1,7 @@
 ---
 title: "The Middle Layer Has No Moat"
 publishedAt: "2026-03-12"
-summary: "The AI stack has three layers. Middleware is a terrible place to build—squeezed by foundation models and apps, with no durable moat."
+summary: "The AI stack has three layers. Middleware that only bridges model gaps has no durable moat—unlike observability and guardrails, which grow with capability."
 ---
 
 There is a pattern in the current wave of AI startups that I think is going to end badly for a lot of investors. The pattern is: a foundation model releases a new capability, and within weeks a startup appears that wraps that capability into a developer-friendly product. The startup raises money, acquires customers, and for a while looks like it's building something real. Then the foundation model releases the next version, the new capability is built in natively, and the startup's product becomes redundant.
@@ -22,17 +22,27 @@ Or consider MCP, the protocol for connecting AI models to external tools. Buildi
 
 The pattern is always the same: the middleware company identifies a real gap between what the model can do and what the application needs. It fills that gap. Then the model improves and the gap closes. The middleware company has to find a new gap, but the new gap is smaller, and it closes faster. This is a treadmill, not a business.
 
+I should be precise about what kind of middleware I mean. There are two types. The first fills capability gaps: the model can't do X yet, so the middleware does X on top of the model. RAG, voice orchestration, most agent frameworks. These are the ones that get swallowed, because their entire reason for existing disappears when the model learns to do X natively.
+
+The second type manages the new complexity that model capabilities create. LLM observability, safety guardrails, access control, audit logging. These don't fill a gap in what the model can do. They deal with the problems that arise because the model can do so much. A model getting smarter doesn't eliminate the need to monitor it. It makes the need greater. This second type of middleware has a chance of surviving, because its value grows with model capability rather than shrinking.
+
+The middleware I'm arguing against is the first kind. If your company exists because the model can't yet do something, you are building on a countdown timer.
+
 Now, someone will point out that middleware companies have existed successfully in other parts of the technology stack. Stripe sits between applications and payment networks. Twilio sits between applications and telecom carriers. These are middleware, and they're enormously valuable. Why should AI middleware be different?
 
 The answer is that Stripe's moat is not its code. Stripe's moat is financial regulation, banking licenses, compliance infrastructure, and relationships with payment networks across dozens of countries. These are barriers that cannot be replicated by a better model or a larger training run. Twilio's moat is carrier relationships and telecom infrastructure. The value in these companies comes from navigating complex, slow-moving, human-institutional systems that exist outside the domain of software entirely.
 
 Foundation model companies have an analogous structure. Their moat is not their architecture, which gets published in papers and replicated within months. Their moat is compute access, proprietary data, and a concentration of research talent that takes years to build. These are hard, physical, institutional barriers.
 
-AI middleware has neither kind of moat. Its entire value proposition is a technical implementation: stitching together model capabilities in a useful way. Technical implementations are exactly what gets eaten when the layers above and below you move fast. You have no regulatory barrier, no physical infrastructure, no institutional relationships, no accumulated data that gets better with use. You have code. And code, in the age of AI, is the cheapest thing in the world.
+AI middleware has neither kind of moat. Its entire value proposition is a technical implementation: stitching together model capabilities in a useful way. Technical implementations are exactly what gets eaten when the layers above and below you move fast. You have no regulatory barrier, no physical infrastructure, no institutional relationships, no accumulated data that gets better with use. You have code. And code that merely stitches together existing capabilities, in the age of AI, is the cheapest thing in the world.
 
 What does have a moat is the application layer. And the reason is simple: applications face humans.
 
-When a human being uses your product every day, builds their workflow around it, accumulates data inside it, and trains their team on it, you have switching cost. When your product has a brand that users trust, you have pricing power. When your interface is optimized for how humans see and decide, as I've argued elsewhere, you have a GUI moat that no API call can replicate. These are the same kinds of moats that protect Stripe and the foundation models: they come from outside the domain of pure software engineering.
+When a human being uses your product every day, builds their workflow around it, accumulates data inside it, and trains their team on it, you have switching cost. When your product has a brand that users trust, you have pricing power. When your interface is optimized for how humans see and decide, as I've argued elsewhere, you have a GUI moat that no API call can replicate.
+
+This doesn't mean every application that faces humans automatically has a moat. An AI writing assistant or a chatbot wrapper has near-zero switching cost, because the user has nothing accumulated inside it. The application-layer moat comes specifically from data accumulation, workflow integration, and habitual use. The question is not "does a human use it?" but "would a human feel pain if they had to switch?"
+
+These are the same kinds of moats that protect Stripe and the foundation models: they come from outside the domain of pure software engineering.
 
 The practical implication for small startups is clear. If you're building in AI, build at the application layer. Build something a human being uses, cares about, and would miss if it disappeared. Don't build plumbing between the model and the app. That plumbing is going to be absorbed by the model on one side and the app on the other, and you'll be left with nothing.
 
