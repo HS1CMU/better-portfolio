@@ -1402,7 +1402,7 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
               <a href="https://www.heathsun.dev/blog/gui" target="_blank" rel="noopener noreferrer"
                  onClick={e => e.stopPropagation()}
                  className="font-mono text-white/70 hover:text-white transition-colors cursor-pointer shrink-0">
-                The Best Interface in the AI Era Is Still a GUI
+                GUIs Are Not Going Anywhere
               </a>
               <span className="text-white/40">{" (2026)"}</span>
             </span>
