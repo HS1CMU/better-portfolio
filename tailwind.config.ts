@@ -24,8 +24,6 @@ const config = {
         mono: ["var(--font-mono)", ...fontFamily.mono],
         sans: ["var(--font-text)", ...fontFamily.sans],
         serif: ["var(--font-serif)", ...fontFamily.serif],
-        /** Major titles for blog essays (Perfectly Nineties) */
-        essayTitle: ["var(--font-essay-title)", "var(--font-text)", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
