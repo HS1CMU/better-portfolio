@@ -1270,29 +1270,31 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
               <button
                 type="button"
                 onClick={e => { e.stopPropagation(); onClickItem("cat .coffee.txt"); }}
-                className="shrink-0 text-white font-medium hover:opacity-90 transition-opacity cursor-pointer bg-transparent border-0 p-0">
+                className="shrink-0 font-medium hover:opacity-90 transition-opacity cursor-pointer bg-transparent border-0 p-0"
+                style={{ color: ACCENT }}>
                 Coffee
               </button>
               <a href="https://www.linkedin.com/in/heathsun/" target="_blank" rel="noopener noreferrer"
                  onClick={e => e.stopPropagation()}
-                 className="shrink-0 text-white font-medium hover:opacity-90 transition-opacity">
+                 className="shrink-0 font-medium hover:opacity-90 transition-opacity"
+                 style={{ color: ACCENT }}>
                 LinkedIn
               </a>
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-white/30">
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-white/50">
                 <a href="https://x.com/1HeathSun" target="_blank" rel="noopener noreferrer"
                    onClick={e => e.stopPropagation()}
-                   className="hover:text-white/45 transition-colors">
+                   className="hover:text-white/70 transition-colors">
                   X
-                </a>
-                <a href="mailto:heathsun@cmu.edu"
-                   onClick={e => e.stopPropagation()}
-                   className="hover:text-white/45 transition-colors truncate max-w-[min(100%,11rem)]">
-                  heathsun@cmu.edu
                 </a>
                 <a href="https://github.com/HS1CMU" target="_blank" rel="noopener noreferrer"
                    onClick={e => e.stopPropagation()}
-                   className="hover:text-white/45 transition-colors">
+                   className="hover:text-white/70 transition-colors">
                   GitHub
+                </a>
+                <a href="mailto:heathsun@cmu.edu"
+                   onClick={e => e.stopPropagation()}
+                   className="hover:text-white/70 transition-colors truncate max-w-[min(100%,11rem)]">
+                  heathsun@cmu.edu
                 </a>
               </div>
             </div>
