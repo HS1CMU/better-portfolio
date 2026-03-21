@@ -1,0 +1,41 @@
+---
+title: "The Middle Layer Has No Moat"
+publishedAt: "2026-03-12"
+summary: "The AI stack has three layers. Middleware is a terrible place to build—squeezed by foundation models and apps, with no durable moat."
+---
+
+There is a pattern in the current wave of AI startups that I think is going to end badly for a lot of investors. The pattern is: a foundation model releases a new capability, and within weeks a startup appears that wraps that capability into a developer-friendly product. The startup raises money, acquires customers, and for a while looks like it's building something real. Then the foundation model releases the next version, the new capability is built in natively, and the startup's product becomes redundant.
+
+This has already happened several times, and it's about to happen a lot more.
+
+The AI stack, as it's settling into shape, has three layers. At the bottom are the foundation models: OpenAI, Anthropic, Google, DeepSeek. These companies train large models on massive compute clusters with proprietary data pipelines. In the middle are what I'll call middleware companies: they take the raw capabilities of foundation models and package them into specific functionalities. RAG orchestration, voice AI pipelines, agent frameworks, MCP tooling. At the top are application companies: they build products that actual humans use. A customer support tool, a legal research product, a creative writing assistant, a live speaking coach.
+
+The thesis of this essay is simple: the middle layer is a terrible place to build a company. It has no durable moat, and the value it captures today will be squeezed to zero by the layers above and below it.
+
+The reason is structural. Middleware companies are squeezed from both directions. From below, foundation models are improving at a pace that routinely swallows middleware functionality whole. From above, application companies choose their infrastructure purely on quality and cost, and will switch the moment a better option appears. The middleware company has no leverage on either side.
+
+Take voice AI as an example. Vapi built a business orchestrating voice interactions on top of existing models: handling turn-taking, latency, interruptions, the messy engineering of real-time conversation. This was genuinely hard to do well, and Vapi did it well. Then in January 2026, Nvidia released PersonaPlex, a 7-billion-parameter model that replaces the entire traditional voice AI pipeline, speech recognition, language model, text-to-speech, with a single unified model that listens and speaks simultaneously. Turn-taking, interruptions, backchannels, natural pauses: all handled natively inside the model at 240-millisecond latency. Once a single model can do end-to-end what used to require an orchestration layer stitching together three separate systems, the orchestration layer has nothing left to sell.
+
+This is not a one-time event. It is the recurring dynamic of the middle layer. Consider RAG. A year ago, building a retrieval-augmented generation pipeline required real engineering: chunking strategies, embedding models, vector databases, reranking, prompt construction. Companies sprang up to package this. But context windows keep getting longer, models keep getting better at using raw context, and the foundation model providers are building retrieval directly into their APIs. The standalone RAG company is solving a problem that is actively disappearing.
+
+Or consider MCP, the protocol for connecting AI models to external tools. Building an MCP server or tooling around it is useful today. But MCP is a protocol, not a product. Protocols are adopted, not purchased. Once MCP becomes standard, the companies that merely package it have nothing proprietary left to sell. They're building a business on top of something designed, by definition, to be open and interchangeable.
+
+The pattern is always the same: the middleware company identifies a real gap between what the model can do and what the application needs. It fills that gap. Then the model improves and the gap closes. The middleware company has to find a new gap, but the new gap is smaller, and it closes faster. This is a treadmill, not a business.
+
+Now, someone will point out that middleware companies have existed successfully in other parts of the technology stack. Stripe sits between applications and payment networks. Twilio sits between applications and telecom carriers. These are middleware, and they're enormously valuable. Why should AI middleware be different?
+
+The answer is that Stripe's moat is not its code. Stripe's moat is financial regulation, banking licenses, compliance infrastructure, and relationships with payment networks across dozens of countries. These are barriers that cannot be replicated by a better model or a larger training run. Twilio's moat is carrier relationships and telecom infrastructure. The value in these companies comes from navigating complex, slow-moving, human-institutional systems that exist outside the domain of software entirely.
+
+Foundation model companies have an analogous structure. Their moat is not their architecture, which gets published in papers and replicated within months. Their moat is compute access, proprietary data, and a concentration of research talent that takes years to build. These are hard, physical, institutional barriers.
+
+AI middleware has neither kind of moat. Its entire value proposition is a technical implementation: stitching together model capabilities in a useful way. Technical implementations are exactly what gets eaten when the layers above and below you move fast. You have no regulatory barrier, no physical infrastructure, no institutional relationships, no accumulated data that gets better with use. You have code. And code, in the age of AI, is the cheapest thing in the world.
+
+What does have a moat is the application layer. And the reason is simple: applications face humans.
+
+When a human being uses your product every day, builds their workflow around it, accumulates data inside it, and trains their team on it, you have switching cost. When your product has a brand that users trust, you have pricing power. When your interface is optimized for how humans see and decide, as I've argued elsewhere, you have a GUI moat that no API call can replicate. These are the same kinds of moats that protect Stripe and the foundation models: they come from outside the domain of pure software engineering.
+
+The practical implication for small startups is clear. If you're building in AI, build at the application layer. Build something a human being uses, cares about, and would miss if it disappeared. Don't build plumbing between the model and the app. That plumbing is going to be absorbed by the model on one side and the app on the other, and you'll be left with nothing.
+
+I know middleware feels safe. It feels like "picks and shovels." It feels like you're building infrastructure, which sounds important and durable. But the picks-and-shovels analogy only works when the shovels don't keep redesigning themselves every three months. In AI, the shovels are alive. They grow new features, extend into new capabilities, and absorb the tools that were built on top of them. You don't want to be a tool built on top of a tool that is actively trying to make you unnecessary.
+
+The companies that will endure in the AI era are the ones closest to humans on one end and closest to the physical constraints of computation on the other. The middle, where the only barrier is clever engineering, is exactly where you don't want to be.

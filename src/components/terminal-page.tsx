@@ -1408,6 +1408,23 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
               <span className="text-white/40">{" (2026)"}</span>
             </span>
           </div>
+          <div className="flex gap-2 leading-relaxed"
+            onMouseEnter={() => setHoveredRow(13)}
+          >
+            <span className="shrink-0 w-3 text-center inline-block">
+              {activeRow === 13
+                ? <span className="text-[10px] opacity-80" style={{ color: ACCENT }}>𒀭</span>
+                : <span className="text-white/25">·</span>}
+            </span>
+            <span>
+              <a href="https://www.heathsun.dev/blog/middle-layer" target="_blank" rel="noopener noreferrer"
+                 onClick={e => e.stopPropagation()}
+                 className="hover:opacity-70 transition-opacity text-white/70">
+                <span className="text-white">The Middle Layer Has No Moat</span>
+              </a>
+              <span className="text-white/40">{" (2026)"}</span>
+            </span>
+          </div>
         </div>
       </div>}
 
