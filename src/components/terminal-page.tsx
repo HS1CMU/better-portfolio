@@ -1352,9 +1352,9 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
         </div>
       </div>}
 
-      {/* step 5 — Blog */}
+      {/* step 5 — Essays */}
       {step >= 5 && <div onMouseLeave={() => setHoveredRow(null)}>
-        <div className="text-white/30 mb-1">  BLOG</div>
+        <div className="text-white/30 mb-1">  ESSAYS</div>
         <div className="space-y-1 pl-2">
           <div className="flex gap-2 leading-relaxed"
             onMouseEnter={() => setHoveredRow(9)}
@@ -1387,6 +1387,23 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
                  onClick={e => e.stopPropagation()}
                  className="hover:opacity-70 transition-opacity text-white/70">
                 <span className="text-white">Ideas Are More Important Than Execution</span>
+              </a>
+              <span className="text-white/40">{" (2026)"}</span>
+            </span>
+          </div>
+          <div className="flex gap-2 leading-relaxed"
+            onMouseEnter={() => setHoveredRow(12)}
+          >
+            <span className="shrink-0 w-3 text-center inline-block">
+              {activeRow === 12
+                ? <span className="text-[10px] opacity-80" style={{ color: ACCENT }}>𒀭</span>
+                : <span className="text-white/25">·</span>}
+            </span>
+            <span>
+              <a href="https://www.heathsun.dev/blog/gui" target="_blank" rel="noopener noreferrer"
+                 onClick={e => e.stopPropagation()}
+                 className="hover:opacity-70 transition-opacity text-white/70">
+                <span className="text-white">GUI Will Still Be Dominant in the AI Era</span>
               </a>
               <span className="text-white/40">{" (2026)"}</span>
             </span>
