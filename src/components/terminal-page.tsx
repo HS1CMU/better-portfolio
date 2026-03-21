@@ -1228,7 +1228,7 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
   const [hoveredRow, setHoveredRow] = useState<number | null>(null);
   const activeRow = hoveredRow ?? 0;
   useEffect(() => {
-    if (step >= 6) return;
+    if (step >= 7) return;
     const id = setTimeout(() => setStep(s => s + 1), 45);
     return () => clearTimeout(id);
   }, [step]);
@@ -1263,44 +1263,6 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
             <div className="text-white/55">CMU (M.S. SM) · Oxford (AI) · Nottingham (B.S. CS)</div>
             <div className="text-white/55">Ex-ZhenFund EIR · Li Dak Sum Research Fellow</div>
             <div className="text-white/55"></div>
-          </div>
-          {/* Funnel: sits on divider directly under bio (aligned with ascii band, not stretched to column bottom). */}
-          <div className="mt-3 pt-3 border-t border-white/[0.12] w-full">
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-left font-mono font-normal">
-              <button
-                type="button"
-                onClick={e => { e.stopPropagation(); onClickItem("cat .coffee.txt"); }}
-                className="shrink-0 font-medium cursor-pointer bg-transparent border-0 p-0 text-[#08fff3] hover:text-[#b5fff9] transition-colors duration-150">
-                Coffee
-              </button>
-              <a href="https://www.linkedin.com/in/heathsun/" target="_blank" rel="noopener noreferrer"
-                 onClick={e => e.stopPropagation()}
-                 className="shrink-0 font-medium text-[#08fff3] hover:text-[#b5fff9] transition-colors duration-150">
-                LinkedIn
-              </a>
-              <div className="flex flex-wrap items-center gap-x-4 text-white/50">
-                <a href="https://x.com/1HeathSun" target="_blank" rel="noopener noreferrer"
-                   onClick={e => e.stopPropagation()}
-                   className="hover:text-white transition-colors duration-150">
-                  X
-                </a>
-                <a href="https://github.com/HS1CMU" target="_blank" rel="noopener noreferrer"
-                   onClick={e => e.stopPropagation()}
-                   className="hover:text-white transition-colors duration-150">
-                  GitHub
-                </a>
-                <a href="https://www.instagram.com/heath_sun111/" target="_blank" rel="noopener noreferrer"
-                   onClick={e => e.stopPropagation()}
-                   className="hover:text-white transition-colors duration-150">
-                  Instagram
-                </a>
-              </div>
-              <a href="mailto:heathsun@cmu.edu"
-                 onClick={e => e.stopPropagation()}
-                 className="ml-auto text-white/50 hover:text-white transition-colors duration-150 truncate max-w-[min(100%,14rem)]">
-                heathsun@cmu.edu
-              </a>
-            </div>
           </div>
         </div>
       </div>
@@ -1465,8 +1427,55 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
         </div>
       </div>}
 
-      {/* step 6 — Command hint */}
-      {step >= 6 && <div className="pl-2">
+      {/* step 6 — CONTACT */}
+      {step >= 6 && <div>
+        <div className="text-white/30 mb-1">  CONTACT</div>
+        <div className="pl-2">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 font-mono font-normal">
+            <button
+              type="button"
+              onClick={e => { e.stopPropagation(); onClickItem("cat .coffee.txt"); }}
+              className="shrink-0 font-medium cursor-pointer bg-transparent border-0 p-0 text-[#08fff3] hover:text-[#b5fff9] transition-colors duration-150">
+              Coffee
+            </button>
+            <a href="https://www.linkedin.com/in/heathsun/" target="_blank" rel="noopener noreferrer"
+               onClick={e => e.stopPropagation()}
+               className="shrink-0 font-medium text-[#08fff3] hover:text-[#b5fff9] transition-colors duration-150">
+              LinkedIn
+            </a>
+            <div className="flex flex-wrap items-center gap-x-4 text-white/50">
+              <a href="https://x.com/1HeathSun" target="_blank" rel="noopener noreferrer"
+                 onClick={e => e.stopPropagation()}
+                 className="hover:text-white transition-colors duration-150">
+                X
+              </a>
+              <a href="https://www.youtube.com/@HeathSun" target="_blank" rel="noopener noreferrer"
+                 onClick={e => e.stopPropagation()}
+                 className="hover:text-white transition-colors duration-150">
+                YouTube
+              </a>
+              <a href="https://github.com/HS1CMU" target="_blank" rel="noopener noreferrer"
+                 onClick={e => e.stopPropagation()}
+                 className="hover:text-white transition-colors duration-150">
+                GitHub
+              </a>
+              <a href="https://www.instagram.com/heath_sun111/" target="_blank" rel="noopener noreferrer"
+                 onClick={e => e.stopPropagation()}
+                 className="hover:text-white transition-colors duration-150">
+                Instagram
+              </a>
+              <a href="mailto:heathsun@cmu.edu"
+                 onClick={e => e.stopPropagation()}
+                 className="hover:text-white transition-colors duration-150 truncate max-w-[min(100%,14rem)]">
+                heathsun@cmu.edu
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>}
+
+      {/* step 7 — Command hint */}
+      {step >= 7 && <div className="pl-2">
         <div className="text-white/25">Type &apos;<button onClick={e => { e.stopPropagation(); onClickItem("help"); }} className="text-white hover:opacity-70 transition-opacity cursor-pointer">help</button>&apos; to see more commands...</div>
       </div>}
     </div>
