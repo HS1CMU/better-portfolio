@@ -1304,69 +1304,8 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
         </div>
       </div>
 
-      {/* step 1 — PREV (formerly highlights) */}
-      {step >= 1 && <div className="space-y-1.5 text-white/55 pl-2">
-        <div className="text-white/25 mb-1">PREV</div>
-        {[
-          <>Built an AI tarot <button onClick={e => { e.stopPropagation(); onClickItem("cat fate_algo_product/README.md"); }} className="underline underline-offset-2 cursor-pointer hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>app</button> at 19 that reached 22K users; later served as the youngest ZhenResident at <a href="https://www.google.com/search?q=what+is+ZhenFund&sca_esv=cf639ee39397d013&rlz=1C5AJCO_enUS1197US1197&sxsrf=ANbL-n5V0xXLpeWDlO_oQkFOx65vcP30xg%3A1773620042917&ei=Sku3adnXN9730PEPhtnI6Q8&biw=1470&bih=835&ved=0ahUKEwjZpP_EkaOTAxXeOzQIHYYsMv0Q4dUDCBE&uact=5&oq=what+is+ZhenFund&gs_lp=Egxnd3Mtd2l6LXNlcnAiEHdoYXQgaXMgWmhlbkZ1bmQyBRAAGO8FMgUQABjvBTIIEAAYgAQYogQyCBAAGIAEGKIEMggQABiABBiiBEjcC1D2AVjeCnABeACQAQCYAZkBoAG3BqoBAzUuM7gBA8gBAPgBAZgCCaAC6AbCAgsQABiABBiwAxiiBMICCBAAGLADGO8FwgIIEAAYgAQYywHCAgcQABiABBgNwgIGEAAYDRgewgIIEAAYChgNGB7CAgUQIRigAcICBxAhGKABGAqYAwCIBgGQBgSSBwM1LjSgB4sWsgcDNC40uAffBsIHBTAuMy42yAcdgAgA&sclient=gws-wiz-serp" target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="underline hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>ZhenFund</a>, China&apos;s leading VC.</>,
-          <>Founded <a href="https://www.google.com/search?q=what+is+EuroMCM&rlz=1C5AJCO_enUS1197US1197&oq=what+is+EuroMCM&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIKCAEQABiABBiiBDIKCAIQABiABBiiBDIKCAMQABiABBiiBDIKCAQQABiABBiiBDIHCAUQABjvBdIBCTUzNzFqMGoxNagCCLACAfEFgp7W_KPZtVY&sourceid=chrome&ie=UTF-8" target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="underline hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>EuroMCM</a>, a non-profit pan-European applied mathematics competition, starting from zero budget.</>,
-          <>Won China&apos;s 18th <a href="https://www.google.com/search?q=what+is+Challenge+Cup+China&sca_esv=cf639ee39397d013&rlz=1C5AJCO_enUS1197US1197&biw=1470&bih=835&sxsrf=ANbL-n5yvoJ3MVL5HqsyzxJZ-FEMeP5hUg%3A1773620113018&ei=kUu3aeBhhL_Q8Q_xwLPwDQ&ved=0ahUKEwig7rXmkaOTAxWEHzQIHXHgDN4Q4dUDCBE&uact=5&oq=what+is+Challenge+Cup+China&gs_lp=Egxnd3Mtd2l6LXNlcnAiG3doYXQgaXMgQ2hhbGxlbmdlIEN1cCBDaGluYTIIECEYoAEYwwQyCBAhGKABGMMEMggQIRigARjDBEjfCVD4AViICHABeACQAQCYAa4BoAGpCKoBAzMuNrgBA8gBAPgBAZgCBKAChAPCAgoQABiwAxjWBBhHwgIKECEYoAEYwwQYCpgDAIgGAZAGBJIHAzEuM6AHvSOyBwMwLjO4B4ADwgcDMC40yAcHgAgA&sclient=gws-wiz-serp" target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="underline hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>Challenge Cup</a> national first prize in quantum programming (co-created <button type="button" onClick={e => { e.stopPropagation(); onClickItem("cat stateq/README.md"); }} className="underline underline-offset-2 cursor-pointer hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>StateQ</button>) and received the $60K <a href="https://www.google.com/search?q=what+is+Li+Dak+Sum+fellow&sca_esv=cf639ee39397d013&rlz=1C5AJCO_enUS1197US1197&biw=1470&bih=835&sxsrf=ANbL-n6kguQD72BsO59GEzUuAJgUbYmIpQ%3A1773620211240&ei=80u3abquDsP20PEPyL6soQM&ved=0ahUKEwj686CVkqOTAxVDOzQIHUgfKzQQ4dUDCBE&uact=5&oq=what+is+Li+Dak+Sum+fellow&gs_lp=Egxnd3Mtd2l6LXNlcnAiGXdoYXQgaXMgTGkgRGFrIFN1bSBmZWxsb3cyBRAhGKABSJAoUABY3CZwAXgBkAEAmAGFAaABmg2qAQQ2LjEwuAEDyAEA-AEBmAIOoAKLC8ICCBAhGKABGMMEwgIHECEYoAEYCpgDAJIHAzYuOKAHviKyBwM1Lji4B4gLwgcEMy4xMcgHFIAIAA&sclient=gws-wiz-serp" target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="underline hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>Li Dak Sum Fellowship</a>.</>,
-          <>Interned at <a href="https://www.google.com/search?q=what+is+UKRI+Trustworthy+Autonomous+System+Hub&sca_esv=cf639ee39397d013&rlz=1C5AJCO_enUS1197US1197&biw=1470&bih=835&sxsrf=ANbL-n6C8YB0sWpPT38eeKWpicMc3vpkDg%3A1773620771391&ei=I063aZXEF_uNm9cP4MaP4AE&ved=0ahUKEwjV4a2glKOTAxX7xuYEHWDjAxwQ4dUDCBE&uact=5&oq=what+is+UKRI+Trustworthy+Autonomous+System+Hub&gs_lp=Egxnd3Mtd2l6LXNlcnAiLndoYXQgaXMgVUtSSSBUcnVzdHdvcnRoeSBBdXRvbm9tb3VzIFN5c3RlbSBIdWIyBRAhGKABSNqqAVC6BVj8pwFwD3gBkAEBmAGFAqABoiaqAQc0MC4xMy4xuAEDyAEA-AEBmAJEoAKHJsICChAAGLADGNYEGEfCAgoQIxiABBgnGIoFwgIIEAAYgAQYywHCAggQLhiABBjLAcICBBAAGB7CAgYQABgIGB7CAggQABiABBiiBMICBRAAGO8FwgIHECEYoAEYCsICBBAhGAqYAwCIBgGQBgGSBwU1Mi4xNqAH1a4BsgcFMzcuMTa4B9slwgcGOS41NC41yAdvgAgA&sclient=gws-wiz-serp" target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="underline hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>UKRI TAS</a> and <a href="https://www.google.com/search?q=what+is+China+Mobile&sca_esv=cf639ee39397d013&rlz=1C5AJCO_enUS1197US1197&biw=1470&bih=835&sxsrf=ANbL-n44YqIj9L-DVPVRt6KuqjDlZ6e2lw%3A1773620408482&ei=uEy3adeOHfu00PEPyODUwAs&ved=0ahUKEwjXyqfzkqOTAxV7GjQIHUgwFbgQ4dUDCBE&uact=5&oq=what+is+China+Mobile&gs_lp=Egxnd3Mtd2l6LXNlcnAiFHdoYXQgaXMgQ2hpbmEgTW9iaWxlMggQABiABBjLATIIEAAYgAQYywEyCBAAGIAEGMsBMgQQABgeMgQQABgeMgQQABgeMgQQABgeMgQQABgeMgQQABgeMgQQABgeSONyULIEWMNxcAF4AZABAJgBZaABqA2qAQQxOS4xuAEDyAEA-AEBmAIVoAKBDqgCCsICBxAjGCcY6gLCAgQQIxgnwgIKECMYgAQYJxiKBcICCxAuGIAEGNEDGMcBwgIFEAAYgATCAgoQABiABBhDGIoFwgIOEC4YgAQYxwEYjgUYrwHCAggQLhiABBjLAZgDBfEFTZqpZ-o9LD2SBwQxNS42oAeAe7IHBDE0Nja4B_wNwgcGMC44LjEzyAc-gAgA&sclient=gws-wiz-serp" target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="underline hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>China Mobile</a>, working on voice AI and agent-related research and engineering.</>,
-          <>Won multiple hackathons, including <a href="https://www.linkedin.com/posts/heathsun_ai-hackathon-agenticai-activity-7357069306276290560-l0CC?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEboMJ8B6_eFT-ETRpHba3LKxkSctgFITYw" target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="underline hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>2nd place</a> in the AI agent track at China&apos;s largest hackathon, <a href="https://www.google.com/search?q=what+is+AdventureX+hackathon+china&sca_esv=cf639ee39397d013&rlz=1C5AJCO_enUS1197US1197&biw=1470&bih=835&sxsrf=ANbL-n6arT7vwv6SwxxZsmxNxGJ57yUWLQ%3A1773620340095&ei=dEy3adHIBffO0PEP9uLGsQo&ved=0ahUKEwjR0tnSkqOTAxV3JzQIHXaxMaYQ4dUDCBE&uact=5&oq=what+is+AdventureX+hackathon+china&gs_lp=Egxnd3Mtd2l6LXNlcnAiIndoYXQgaXMgQWR2ZW50dXJlWCBoYWNrYXRob24gY2hpbmEyBRAhGKABSMgVUJEDWMQUcAF4AJABAJgBtAGgAf8MqgEEMTAuNrgBA8gBAPgBAZgCEKAC6QzCAgoQABiwAxjWBBhHwgIIEAAYgAQYogTCAgUQABjvBcICBxAhGKABGAqYAwCIBgGQBgOSBwQxMC42oAfOMLIHAzkuNrgH5AzCBwQ0LjEyyAcXgAgA&sclient=gws-wiz-serp" target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="underline hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>AdventureX</a> (8K+ developers applied).</>,
-        ].map((item, i) => (
-          <div key={i} className="flex gap-2 leading-relaxed">
-            <span className="shrink-0 text-white/25">{i + 1}.</span>
-            <span>{item}</span>
-          </div>
-        ))}
-      </div>}
-
-      {/* step 2 — GitHub contribution graph */}
-      {step >= 2 && <div className="space-y-2">
-        <div className="text-white/30">
-          {"  "}@HS1CMU
-        </div>
-        <div className="pl-2"><ContribGraph data={contribData} /></div>
-      </div>}
-
-      {/* step 3 — Fun Projects */}
-      {step >= 3 && <div>
-        <div className="text-white/10 mb-2">  ─────────────────────────────────────────────────────────────</div>
-        <div className="text-white/30 mb-1">  FUN PROJECTS</div>
-        <div className="space-y-0.5 pl-2" onMouseLeave={() => setHoveredRow(null)}>
-          {[
-            { id: "louvre_robbery_agent",  name: "Anyfend",            desc: "multi-modal agents simulating spatial heists for museum physical security" },
-            { id: "dump",                  name: "Dump",               desc: "voice agent that breaks up with your bf/gf for you · #1 winner @ AI Valley × Google Hackathon" },
-            { id: "travel_rewind",         name: "Travel Rewind",      desc: "turns your photo gallery into a cinematic travel story · YC × DeepMind Hackathon" },
-            { id: "1CGA_auto_grader",      name: "1CGA",               desc: "One Click to Grade Them All · reduces TA workload ~90%" },
-            { id: "mr_speech_segmentation",name: "AdaSeg4MR",          desc: "zero-shot mixed reality system with speech-guided visual-language understanding" },
-            { id: "a42z_judge",            name: "a42z",               desc: "agentic hackathon judge · runner-up @ AdventureX" },
-            { id: "abovesaid",             name: "Abovesaid",          desc: "personal knowledge layer between you and the internet, distilling information as you read" },
-            { id: "signfold_browser_use",  name: "Signfold",           desc: "browser agent that follows companies across social media with one click" },
-            { id: "dark_web_evidential",   name: "Dark Web Evidental", desc: "OSINT pipeline for automated evidence extraction, built in collaboration with UK law enforcement" },
-          ].map((p, i) => (
-            <div key={i} className="flex items-baseline gap-2"
-              onMouseEnter={() => setHoveredRow(i)}
-            >
-              <span className="shrink-0 w-3 text-center inline-block">
-                {activeRow === i
-                  ? <span className="text-[10px] opacity-80" style={{ color: ACCENT }}>𒀭</span>
-                  : <span className="text-white/25">·</span>}
-              </span>
-              <button
-                onClick={e => { e.stopPropagation(); onClickItem(`cat ${p.id}/README.md`); }}
-                className="text-white/70 hover:text-white transition-colors cursor-pointer shrink-0"
-              >
-                {p.name}
-              </button>
-              <span className="text-white/25 truncate">— {p.desc}</span>
-            </div>
-          ))}
-        </div>
-      </div>}
-
-      {/* step 4 — Essays */}
-      {step >= 4 && <div onMouseLeave={() => setHoveredRow(null)}>
+      {/* step 1 — Essays */}
+      {step >= 1 && <div onMouseLeave={() => setHoveredRow(null)}>
         <div className="text-white/30 mb-1">  ESSAYS</div>
         <div className="space-y-1 pl-2">
           <div className="flex gap-2 leading-relaxed"
@@ -1437,6 +1376,67 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
               <span className="text-white/40">{" (2022)"}</span>
             </span>
           </div>
+        </div>
+      </div>}
+
+      {/* step 2 — PREV */}
+      {step >= 2 && <div className="space-y-1.5 text-white/55 pl-2">
+        <div className="text-white/25 mb-1">PREV</div>
+        {[
+          <>Built an AI tarot <button onClick={e => { e.stopPropagation(); onClickItem("cat fate_algo_product/README.md"); }} className="underline underline-offset-2 cursor-pointer hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>app</button> at 19 that reached 22K users; later served as the youngest ZhenResident at <a href="https://www.google.com/search?q=what+is+ZhenFund&sca_esv=cf639ee39397d013&rlz=1C5AJCO_enUS1197US1197&sxsrf=ANbL-n5V0xXLpeWDlO_oQkFOx65vcP30xg%3A1773620042917&ei=Sku3adnXN9730PEPhtnI6Q8&biw=1470&bih=835&ved=0ahUKEwjZpP_EkaOTAxXeOzQIHYYsMv0Q4dUDCBE&uact=5&oq=what+is+ZhenFund&gs_lp=Egxnd3Mtd2l6LXNlcnAiEHdoYXQgaXMgWmhlbkZ1bmQyBRAAGO8FMgUQABjvBTIIEAAYgAQYogQyCBAAGIAEGKIEMggQABiABBiiBEjcC1D2AVjeCnABeACQAQCYAZkBoAG3BqoBAzUuM7gBA8gBAPgBAZgCCaAC6AbCAgsQABiABBiwAxiiBMICCBAAGLADGO8FwgIIEAAYgAQYywHCAgcQABiABBgNwgIGEAAYDRgewgIIEAAYChgNGB7CAgUQIRigAcICBxAhGKABGAqYAwCIBgGQBgSSBwM1LjSgB4sWsgcDNC40uAffBsIHBTAuMy42yAcdgAgA&sclient=gws-wiz-serp" target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="underline hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>ZhenFund</a>, China&apos;s leading VC.</>,
+          <>Founded <a href="https://www.google.com/search?q=what+is+EuroMCM&rlz=1C5AJCO_enUS1197US1197&oq=what+is+EuroMCM&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIKCAEQABiABBiiBDIKCAIQABiABBiiBDIKCAMQABiABBiiBDIKCAQQABiABBiiBDIHCAUQABjvBdIBCTUzNzFqMGoxNagCCLACAfEFgp7W_KPZtVY&sourceid=chrome&ie=UTF-8" target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="underline hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>EuroMCM</a>, a non-profit pan-European applied mathematics competition, starting from zero budget.</>,
+          <>Won China&apos;s 18th <a href="https://www.google.com/search?q=what+is+Challenge+Cup+China&sca_esv=cf639ee39397d013&rlz=1C5AJCO_enUS1197US1197&biw=1470&bih=835&sxsrf=ANbL-n5yvoJ3MVL5HqsyzxJZ-FEMeP5hUg%3A1773620113018&ei=kUu3aeBhhL_Q8Q_xwLPwDQ&ved=0ahUKEwig7rXmkaOTAxWEHzQIHXHgDN4Q4dUDCBE&uact=5&oq=what+is+Challenge+Cup+China&gs_lp=Egxnd3Mtd2l6LXNlcnAiG3doYXQgaXMgQ2hhbGxlbmdlIEN1cCBDaGluYTIIECEYoAEYwwQyCBAhGKABGMMEMggQIRigARjDBEjfCVD4AViICHABeACQAQCYAa4BoAGpCKoBAzMuNrgBA8gBAPgBAZgCBKAChAPCAgoQABiwAxjWBBhHwgIKECEYoAEYwwQYCpgDAIgGAZAGBJIHAzEuM6AHvSOyBwMwLjO4B4ADwgcDMC40yAcHgAgA&sclient=gws-wiz-serp" target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="underline hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>Challenge Cup</a> national first prize in quantum programming (co-created <button type="button" onClick={e => { e.stopPropagation(); onClickItem("cat stateq/README.md"); }} className="underline underline-offset-2 cursor-pointer hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>StateQ</button>) and received the $60K <a href="https://www.google.com/search?q=what+is+Li+Dak+Sum+fellow&sca_esv=cf639ee39397d013&rlz=1C5AJCO_enUS1197US1197&biw=1470&bih=835&sxsrf=ANbL-n6kguQD72BsO59GEzUuAJgUbYmIpQ%3A1773620211240&ei=80u3abquDsP20PEPyL6soQM&ved=0ahUKEwj686CVkqOTAxVDOzQIHUgfKzQQ4dUDCBE&uact=5&oq=what+is+Li+Dak+Sum+fellow&gs_lp=Egxnd3Mtd2l6LXNlcnAiGXdoYXQgaXMgTGkgRGFrIFN1bSBmZWxsb3cyBRAhGKABSJAoUABY3CZwAXgBkAEAmAGFAaABmg2qAQQ2LjEwuAEDyAEA-AEBmAIOoAKLC8ICCBAhGKABGMMEwgIHECEYoAEYCpgDAJIHAzYuOKAHviKyBwM1Lji4B4gLwgcEMy4xMcgHFIAIAA&sclient=gws-wiz-serp" target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="underline hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>Li Dak Sum Fellowship</a>.</>,
+          <>Interned at <a href="https://www.google.com/search?q=what+is+UKRI+Trustworthy+Autonomous+System+Hub&sca_esv=cf639ee39397d013&rlz=1C5AJCO_enUS1197US1197&biw=1470&bih=835&sxsrf=ANbL-n6C8YB0sWpPT38eeKWpicMc3vpkDg%3A1773620771391&ei=I063aZXEF_uNm9cP4MaP4AE&ved=0ahUKEwjV4a2glKOTAxX7xuYEHWDjAxwQ4dUDCBE&uact=5&oq=what+is+UKRI+Trustworthy+Autonomous+System+Hub&gs_lp=Egxnd3Mtd2l6LXNlcnAiLndoYXQgaXMgVUtSSSBUcnVzdHdvcnRoeSBBdXRvbm9tb3VzIFN5c3RlbSBIdWIyBRAhGKABSNqqAVC6BVj8pwFwD3gBkAEBmAGFAqABoiaqAQc0MC4xMy4xuAEDyAEA-AEBmAJEoAKHJsICChAAGLADGNYEGEfCAgoQIxiABBgnGIoFwgIIEAAYgAQYywHCAggQLhiABBjLAcICBBAAGB7CAgYQABgIGB7CAggQABiABBiiBMICBRAAGO8FwgIHECEYoAEYCsICBBAhGAqYAwCIBgGQBgGSBwU1Mi4xNqAH1a4BsgcFMzcuMTa4B9slwgcGOS41NC41yAdvgAgA&sclient=gws-wiz-serp" target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="underline hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>UKRI TAS</a> and <a href="https://www.google.com/search?q=what+is+China+Mobile&sca_esv=cf639ee39397d013&rlz=1C5AJCO_enUS1197US1197&biw=1470&bih=835&sxsrf=ANbL-n44YqIj9L-DVPVRt6KuqjDlZ6e2lw%3A1773620408482&ei=uEy3adeOHfu00PEPyODUwAs&ved=0ahUKEwjXyqfzkqOTAxV7GjQIHUgwFbgQ4dUDCBE&uact=5&oq=what+is+China+Mobile&gs_lp=Egxnd3Mtd2l6LXNlcnAiFHdoYXQgaXMgQ2hpbmEgTW9iaWxlMggQABiABBjLATIIEAAYgAQYywEyCBAAGIAEGMsBMgQQABgeMgQQABgeMgQQABgeMgQQABgeMgQQABgeMgQQABgeMgQQABgeSONyULIEWMNxcAF4AZABAJgBZaABqA2qAQQxOS4xuAEDyAEA-AEBmAIVoAKBDqgCCsICBxAjGCcY6gLCAgQQIxgnwgIKECMYgAQYJxiKBcICCxAuGIAEGNEDGMcBwgIFEAAYgATCAgoQABiABBhDGIoFwgIOEC4YgAQYxwEYjgUYrwHCAggQLhiABBjLAZgDBfEFTZqpZ-o9LD2SBwQxNS42oAeAe7IHBDE0Nja4B_wNwgcGMC44LjEzyAc-gAgA&sclient=gws-wiz-serp" target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="underline hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>China Mobile</a>, working on voice AI and agent-related research and engineering.</>,
+          <>Won multiple hackathons, including <a href="https://www.linkedin.com/posts/heathsun_ai-hackathon-agenticai-activity-7357069306276290560-l0CC?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEboMJ8B6_eFT-ETRpHba3LKxkSctgFITYw" target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="underline hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>2nd place</a> in the AI agent track at China&apos;s largest hackathon, <a href="https://www.google.com/search?q=what+is+AdventureX+hackathon+china&sca_esv=cf639ee39397d013&rlz=1C5AJCO_enUS1197US1197&biw=1470&bih=835&sxsrf=ANbL-n6arT7vwv6SwxxZsmxNxGJ57yUWLQ%3A1773620340095&ei=dEy3adHIBffO0PEP9uLGsQo&ved=0ahUKEwjR0tnSkqOTAxV3JzQIHXaxMaYQ4dUDCBE&uact=5&oq=what+is+AdventureX+hackathon+china&gs_lp=Egxnd3Mtd2l6LXNlcnAiIndoYXQgaXMgQWR2ZW50dXJlWCBoYWNrYXRob24gY2hpbmEyBRAhGKABSMgVUJEDWMQUcAF4AJABAJgBtAGgAf8MqgEEMTAuNrgBA8gBAPgBAZgCEKAC6QzCAgoQABiwAxjWBBhHwgIIEAAYgAQYogTCAgUQABjvBcICBxAhGKABGAqYAwCIBgGQBgOSBwQxMC42oAfOMLIHAzkuNrgH5AzCBwQ0LjEyyAcXgAgA&sclient=gws-wiz-serp" target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="underline hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>AdventureX</a> (8K+ developers applied).</>,
+        ].map((item, i) => (
+          <div key={i} className="flex gap-2 leading-relaxed">
+            <span className="shrink-0 text-white/25">{i + 1}.</span>
+            <span>{item}</span>
+          </div>
+        ))}
+      </div>}
+
+      {/* step 3 — GitHub contribution graph */}
+      {step >= 3 && <div className="space-y-2">
+        <div className="text-white/30">
+          {"  "}@HS1CMU
+        </div>
+        <div className="pl-2"><ContribGraph data={contribData} /></div>
+      </div>}
+
+      {/* step 4 — Fun Projects */}
+      {step >= 4 && <div>
+        <div className="text-white/10 mb-2">  ─────────────────────────────────────────────────────────────</div>
+        <div className="text-white/30 mb-1">  FUN PROJECTS</div>
+        <div className="space-y-0.5 pl-2" onMouseLeave={() => setHoveredRow(null)}>
+          {[
+            { id: "louvre_robbery_agent",  name: "Anyfend",            desc: "multi-modal agents simulating spatial heists for museum physical security" },
+            { id: "dump",                  name: "Dump",               desc: "voice agent that breaks up with your bf/gf for you · #1 winner @ AI Valley × Google Hackathon" },
+            { id: "travel_rewind",         name: "Travel Rewind",      desc: "turns your photo gallery into a cinematic travel story · YC × DeepMind Hackathon" },
+            { id: "1CGA_auto_grader",      name: "1CGA",               desc: "One Click to Grade Them All · reduces TA workload ~90%" },
+            { id: "mr_speech_segmentation",name: "AdaSeg4MR",          desc: "zero-shot mixed reality system with speech-guided visual-language understanding" },
+            { id: "a42z_judge",            name: "a42z",               desc: "agentic hackathon judge · runner-up @ AdventureX" },
+            { id: "abovesaid",             name: "Abovesaid",          desc: "personal knowledge layer between you and the internet, distilling information as you read" },
+            { id: "signfold_browser_use",  name: "Signfold",           desc: "browser agent that follows companies across social media with one click" },
+            { id: "dark_web_evidential",   name: "Dark Web Evidental", desc: "OSINT pipeline for automated evidence extraction, built in collaboration with UK law enforcement" },
+          ].map((p, i) => (
+            <div key={i} className="flex items-baseline gap-2"
+              onMouseEnter={() => setHoveredRow(i)}
+            >
+              <span className="shrink-0 w-3 text-center inline-block">
+                {activeRow === i
+                  ? <span className="text-[10px] opacity-80" style={{ color: ACCENT }}>𒀭</span>
+                  : <span className="text-white/25">·</span>}
+              </span>
+              <button
+                onClick={e => { e.stopPropagation(); onClickItem(`cat ${p.id}/README.md`); }}
+                className="text-white/70 hover:text-white transition-colors cursor-pointer shrink-0"
+              >
+                {p.name}
+              </button>
+              <span className="text-white/25 truncate">— {p.desc}</span>
+            </div>
+          ))}
         </div>
       </div>}
 
