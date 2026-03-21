@@ -1419,8 +1419,9 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
               <a href="https://www.heathsun.dev/blog/mysticism" target="_blank" rel="noopener noreferrer"
                  onClick={e => e.stopPropagation()}
                  className="hover:opacity-70 transition-opacity text-white/70">
-                <span className="text-white font-mono font-semibold">Mysticism in the Age of AI:</span>
-                <span className="text-white font-mono font-semibold">{" How to Quantitatively Compare Divination Systems?"}</span>
+                <span className="text-white font-mono font-semibold">
+                  Mysticism in the Age of AI: How to Quantitatively Compare Divination Systems?
+                </span>
               </a>
               <span className="text-white/40">{" (2022)"}</span>
             </span>
