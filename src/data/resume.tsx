@@ -252,7 +252,7 @@ export const DATA = {
       image: "/a42z-judge.gif",
     },
     {
-      title: "Mysticism in the Age of AI",
+      title: "How to Quantitatively Compare Divination Systems (with AI)?",
       href: "/blog/mysticism",
       dates: "August 2022",
       active: true,
