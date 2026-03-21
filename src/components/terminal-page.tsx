@@ -1236,7 +1236,7 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
   return (
     <div className="space-y-4 my-1">
       {/* step 0 — Portrait + Bio */}
-      <div className="flex gap-6 items-start">
+      <div className="flex gap-6 items-stretch">
         {ascii ? (
           <pre className="text-[6px] leading-[1.2] text-white/55 shrink-0 whitespace-pre select-none">
             {ascii}
@@ -1246,55 +1246,63 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
             rendering...
           </div>
         )}
-        <div className="flex flex-col justify-center gap-0.5 py-2 min-w-0">
-          <div style={{ color: ACCENT }}>Heath Sun</div>
-          <div className="text-white/40 mt-0.5">Mountain View, CA</div>
-          <div className="text-white/40">Building AI infrastructure for human communication</div>
-          <div className="h-3" />
-          <div className="space-y-1.5 text-white/80">
-            <div className="text-white/35 text-[11px] tracking-wide font-mono">CURRENT FOCUS</div>
-            <div className="flex gap-2 leading-relaxed items-baseline">
-              <span style={{ color: ACCENT }} className="text-base">→</span>
-              <span>
-                <a href="https://hypercue.ai" target="_blank" rel="noopener noreferrer"
-                   onClick={e => e.stopPropagation()}
-                   className="hover:opacity-70 transition-opacity font-medium" style={{ color: ACCENT }}>
-                  Hypercue
-                </a>
-                <span className="text-white/70">{" — AI for live speaking"}</span>
-              </span>
+        <div className="flex flex-col min-h-[180px] flex-1 min-w-0 py-2">
+          <div className="flex flex-col gap-0.5">
+            <div style={{ color: ACCENT }}>Heath Sun</div>
+            <div className="text-white/40 mt-0.5">Mountain View, CA</div>
+            <div className="text-white/40">Building AI infrastructure for human communication</div>
+            <div className="h-3" />
+            <div className="space-y-1.5 text-white/80">
+              <div className="text-white/35 text-[11px] tracking-wide font-mono">CURRENT FOCUS</div>
+              <div className="flex gap-2 leading-relaxed items-baseline">
+                <span style={{ color: ACCENT }} className="text-base">→</span>
+                <span>
+                  <a href="https://hypercue.ai" target="_blank" rel="noopener noreferrer"
+                     onClick={e => e.stopPropagation()}
+                     className="hover:opacity-70 transition-opacity font-medium" style={{ color: ACCENT }}>
+                    Hypercue
+                  </a>
+                  <span className="text-white/70">{" — AI for live speaking"}</span>
+                </span>
+              </div>
             </div>
+            <div className="h-4" />
+            <div className="text-white/55">CMU (M.S. SM) · Oxford (AI) · Nottingham (B.S. CS)</div>
+            <div className="text-white/55">Ex-ZhenFund EIR · Li Dak Sum Research Fellow</div>
+            <div className="text-white/55"></div>
           </div>
-          <div className="h-4" />
-          <div className="text-white/55">CMU (M.S. SM) · Oxford (AI) · Nottingham (B.S. CS)</div>
-          <div className="text-white/55">Ex-ZhenFund EIR · Li Dak Sum Research Fellow</div>
-          <div className="text-white/55"></div>
-          <div className="h-4" />
-          {/* Primary funnel: LinkedIn (who I am) + Coffee (talk to me); X + email are secondary */}
-          <div className="flex items-center justify-between gap-3 w-full max-w-xl min-w-0 flex-wrap">
-            <a href="https://www.linkedin.com/in/heathsun/" target="_blank" rel="noopener noreferrer"
-               onClick={e => e.stopPropagation()}
-               className="shrink-0 font-mono text-white font-medium hover:opacity-90 transition-opacity">
-              LinkedIn
-            </a>
-            <div className="flex items-center gap-4 text-white/30 font-mono">
-              <a href="https://x.com/1HeathSun" target="_blank" rel="noopener noreferrer"
+          {/* Funnel: Coffee + LinkedIn (primary); X + email + GitHub (secondary). Pinned to bottom of portrait column. */}
+          <div className="mt-auto pt-4 border-t border-white/[0.06] w-full">
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 justify-start text-left font-mono">
+              <button
+                type="button"
+                onClick={e => { e.stopPropagation(); onClickItem("cat .coffee.txt"); }}
+                className="shrink-0 text-white font-medium hover:opacity-90 transition-opacity cursor-pointer bg-transparent border-0 p-0">
+                Coffee
+              </button>
+              <a href="https://www.linkedin.com/in/heathsun/" target="_blank" rel="noopener noreferrer"
                  onClick={e => e.stopPropagation()}
-                 className="hover:text-white/45 transition-colors">
-                X
+                 className="shrink-0 text-white font-medium hover:opacity-90 transition-opacity">
+                LinkedIn
               </a>
-              <a href="mailto:heathsun@cmu.edu"
-                 onClick={e => e.stopPropagation()}
-                 className="hover:text-white/45 transition-colors truncate max-w-[min(100%,11rem)]">
-                heathsun@cmu.edu
-              </a>
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-white/30">
+                <a href="https://x.com/1HeathSun" target="_blank" rel="noopener noreferrer"
+                   onClick={e => e.stopPropagation()}
+                   className="hover:text-white/45 transition-colors">
+                  X
+                </a>
+                <a href="mailto:heathsun@cmu.edu"
+                   onClick={e => e.stopPropagation()}
+                   className="hover:text-white/45 transition-colors truncate max-w-[min(100%,11rem)]">
+                  heathsun@cmu.edu
+                </a>
+                <a href="https://github.com/HS1CMU" target="_blank" rel="noopener noreferrer"
+                   onClick={e => e.stopPropagation()}
+                   className="hover:text-white/45 transition-colors">
+                  GitHub
+                </a>
+              </div>
             </div>
-            <button
-              type="button"
-              onClick={e => { e.stopPropagation(); onClickItem("cat .coffee.txt"); }}
-              className="shrink-0 font-mono text-white font-medium hover:opacity-90 transition-opacity cursor-pointer bg-transparent border-0 p-0">
-              Coffee
-            </button>
           </div>
         </div>
       </div>
