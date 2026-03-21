@@ -191,6 +191,77 @@ const PROJECTS = [
     image: null,
   },
   {
+    id: "stateq", hot: false,
+    displayName: "StateQ",
+    tagline: "Experimental state-based quantum programming language",
+    stack: "Compiler · Quantum control flow · Qif · ZX-calculus",
+    status: "Challenge Cup national first prize (quantum programming)",
+    description:
+      "1. A STATE-CENTRIC PARADIGM WITH ADVANCED QUANTUM CONTROL FLOW\n" +
+      "\n" +
+      "StateQ introduces a fundamental shift in quantum programming by focusing\n" +
+      "on the direct manipulation of quantum states rather than the traditional,\n" +
+      "explicit construction of gate-level quantum circuits. This higher-level\n" +
+      "abstraction aligns more intuitively with the mathematical formalisms of\n" +
+      "quantum mechanics.\n" +
+      "\n" +
+      "Automatic Qubit Management: The framework eliminates the need for manual\n" +
+      "qubit allocation, release, or resetting. The compiler automatically handles\n" +
+      "these tasks, releasing unused ancillary qubits promptly to optimize\n" +
+      "resources and reduce errors.\n" +
+      "\n" +
+      "True Quantum Control Flow: StateQ features a unique Qif statement that\n" +
+      "replaces classical Boolean guards with a quantum Boolean. Unlike classical\n" +
+      "if statements, if the control qubits are in superposition, the Qif statement\n" +
+      "executes both branches simultaneously without measuring or collapsing the\n" +
+      "state, enabling true coherent branching.\n" +
+      "\n" +
+      "2. EXCEPTIONAL CODE CONCISENESS AND DEVELOPER PRODUCTIVITY\n" +
+      "\n" +
+      "Because StateQ abstracts away tedious circuit details and utilizes intuitive\n" +
+      "constructs, it drastically reduces the verbosity typically required to write\n" +
+      "quantum algorithms. This conciseness improves code manageability, readability,\n" +
+      "and the speed of algorithm development. In a benchmark comparing the Lines\n" +
+      "of Code (LoC) across various frameworks, StateQ consistently required the\n" +
+      "least amount of code:\n" +
+      "\n" +
+      "· Bernstein-Vazirani Algorithm: StateQ requires only 11 lines, compared to\n" +
+      "  28 in Cirq and 32 in Q#.\n" +
+      "· Grover's Algorithm: StateQ accomplishes this in 26 lines, vastly outperforming\n" +
+      "  Cirq (45 lines) and Q# (64 lines).\n" +
+      "· Shor's Algorithm: For complex algorithms, the gap widens significantly;\n" +
+      "  StateQ requires just 58 lines, compared to 119 in Quipper, 188 in Cirq,\n" +
+      "  and 269 in Q#.\n" +
+      "\n" +
+      "3. SUPERIOR COMPILATION SPEED AND HARDWARE-LEVEL CIRCUIT OPTIMIZATION\n" +
+      "\n" +
+      "Beyond writing the code, StateQ's multi-stage compiler and Quantum Circuit\n" +
+      "Transpiler demonstrate massive performance advantages in translating high-level\n" +
+      "code into hardware-executable instructions. In a test implementing a (4n+2)\n" +
+      "qubit version of Shor's algorithm, StateQ was benchmarked against Qiskit and\n" +
+      "Q#:\n" +
+      "\n" +
+      "Lightning-Fast Compilation: StateQ's code compile time was clocked between\n" +
+      "0.203 and 0.214 seconds, heavily outperforming Q#'s 3.376 seconds.\n" +
+      "\n" +
+      "Rapid Transpilation: StateQ translated the abstract circuit into low-level\n" +
+      "instructions in 0.112 to 1.294 seconds, while Qiskit took 53.664 seconds\n" +
+      "(or 6.311 seconds with manual optimizations).\n" +
+      "\n" +
+      "Drastic Gate Count Reduction: A lower primitive gate count is crucial for\n" +
+      "minimizing hardware noise. Utilizing its unique with statement (which reduces\n" +
+      "multi-controlled gates) and a ZX-Calculus Optimization pass, StateQ generated\n" +
+      "a circuit with only 27,920 primitive gates. In contrast, Qiskit produced\n" +
+      "108,434 gates with optimized controls, and a staggering 900,546 gates without\n" +
+      "them.\n" +
+      "\n" +
+      "",
+    liveUrl: "https://assets.heathsun.dev/StateQ__An_Experimental_State_Based_Quantum_Programming_Language___New.pdf",
+    liveLabel: "Full technical report (copyrighted)",
+    videoUrl: null,
+    image: null,
+  },
+  {
     id: "multi_agent_workflow", hot: false,
     tagline: "Multi-agent platform with digital human front-end for China Mobile",
     stack: "Python · LangChain · React · Digital Human SDK",
@@ -1226,7 +1297,7 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
         {[
           <>Built an AI tarot <button onClick={e => { e.stopPropagation(); onClickItem("cat fate_algo_product/README.md"); }} className="underline underline-offset-2 cursor-pointer hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>app</button> at 19 that reached 22K users; later served as the youngest ZhenResident at <a href="https://www.google.com/search?q=what+is+ZhenFund&sca_esv=cf639ee39397d013&rlz=1C5AJCO_enUS1197US1197&sxsrf=ANbL-n5V0xXLpeWDlO_oQkFOx65vcP30xg%3A1773620042917&ei=Sku3adnXN9730PEPhtnI6Q8&biw=1470&bih=835&ved=0ahUKEwjZpP_EkaOTAxXeOzQIHYYsMv0Q4dUDCBE&uact=5&oq=what+is+ZhenFund&gs_lp=Egxnd3Mtd2l6LXNlcnAiEHdoYXQgaXMgWmhlbkZ1bmQyBRAAGO8FMgUQABjvBTIIEAAYgAQYogQyCBAAGIAEGKIEMggQABiABBiiBEjcC1D2AVjeCnABeACQAQCYAZkBoAG3BqoBAzUuM7gBA8gBAPgBAZgCCaAC6AbCAgsQABiABBiwAxiiBMICCBAAGLADGO8FwgIIEAAYgAQYywHCAgcQABiABBgNwgIGEAAYDRgewgIIEAAYChgNGB7CAgUQIRigAcICBxAhGKABGAqYAwCIBgGQBgSSBwM1LjSgB4sWsgcDNC40uAffBsIHBTAuMy42yAcdgAgA&sclient=gws-wiz-serp" target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="underline hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>ZhenFund</a>, China&apos;s leading VC.</>,
           <>Founded <a href="https://www.google.com/search?q=what+is+EuroMCM&rlz=1C5AJCO_enUS1197US1197&oq=what+is+EuroMCM&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIKCAEQABiABBiiBDIKCAIQABiABBiiBDIKCAMQABiABBiiBDIKCAQQABiABBiiBDIHCAUQABjvBdIBCTUzNzFqMGoxNagCCLACAfEFgp7W_KPZtVY&sourceid=chrome&ie=UTF-8" target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="underline hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>EuroMCM</a>, a non-profit pan-European applied mathematics competition, starting from zero budget.</>,
-          <>Won China&apos;s 18th <a href="https://www.google.com/search?q=what+is+Challenge+Cup+China&sca_esv=cf639ee39397d013&rlz=1C5AJCO_enUS1197US1197&biw=1470&bih=835&sxsrf=ANbL-n5yvoJ3MVL5HqsyzxJZ-FEMeP5hUg%3A1773620113018&ei=kUu3aeBhhL_Q8Q_xwLPwDQ&ved=0ahUKEwig7rXmkaOTAxWEHzQIHXHgDN4Q4dUDCBE&uact=5&oq=what+is+Challenge+Cup+China&gs_lp=Egxnd3Mtd2l6LXNlcnAiG3doYXQgaXMgQ2hhbGxlbmdlIEN1cCBDaGluYTIIECEYoAEYwwQyCBAhGKABGMMEMggQIRigARjDBEjfCVD4AViICHABeACQAQCYAa4BoAGpCKoBAzMuNrgBA8gBAPgBAZgCBKAChAPCAgoQABiwAxjWBBhHwgIKECEYoAEYwwQYCpgDAIgGAZAGBJIHAzEuM6AHvSOyBwMwLjO4B4ADwgcDMC40yAcHgAgA&sclient=gws-wiz-serp" target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="underline hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>Challenge Cup</a> national first prize in quantum programming and received the $60K <a href="https://www.google.com/search?q=what+is+Li+Dak+Sum+fellow&sca_esv=cf639ee39397d013&rlz=1C5AJCO_enUS1197US1197&biw=1470&bih=835&sxsrf=ANbL-n6kguQD72BsO59GEzUuAJgUbYmIpQ%3A1773620211240&ei=80u3abquDsP20PEPyL6soQM&ved=0ahUKEwj686CVkqOTAxVDOzQIHUgfKzQQ4dUDCBE&uact=5&oq=what+is+Li+Dak+Sum+fellow&gs_lp=Egxnd3Mtd2l6LXNlcnAiGXdoYXQgaXMgTGkgRGFrIFN1bSBmZWxsb3cyBRAhGKABSJAoUABY3CZwAXgBkAEAmAGFAaABmg2qAQQ2LjEwuAEDyAEA-AEBmAIOoAKLC8ICCBAhGKABGMMEwgIHECEYoAEYCpgDAJIHAzYuOKAHviKyBwM1Lji4B4gLwgcEMy4xMcgHFIAIAA&sclient=gws-wiz-serp" target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="underline hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>Li Dak Sum Fellowship</a>.</>,
+          <>Won China&apos;s 18th <a href="https://www.google.com/search?q=what+is+Challenge+Cup+China&sca_esv=cf639ee39397d013&rlz=1C5AJCO_enUS1197US1197&biw=1470&bih=835&sxsrf=ANbL-n5yvoJ3MVL5HqsyzxJZ-FEMeP5hUg%3A1773620113018&ei=kUu3aeBhhL_Q8Q_xwLPwDQ&ved=0ahUKEwig7rXmkaOTAxWEHzQIHXHgDN4Q4dUDCBE&uact=5&oq=what+is+Challenge+Cup+China&gs_lp=Egxnd3Mtd2l6LXNlcnAiG3doYXQgaXMgQ2hhbGxlbmdlIEN1cCBDaGluYTIIECEYoAEYwwQyCBAhGKABGMMEMggQIRigARjDBEjfCVD4AViICHABeACQAQCYAa4BoAGpCKoBAzMuNrgBA8gBAPgBAZgCBKAChAPCAgoQABiwAxjWBBhHwgIKECEYoAEYwwQYCpgDAIgGAZAGBJIHAzEuM6AHvSOyBwMwLjO4B4ADwgcDMC40yAcHgAgA&sclient=gws-wiz-serp" target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="underline hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>Challenge Cup</a> national first prize in quantum programming (co-created <button type="button" onClick={e => { e.stopPropagation(); onClickItem("cat stateq/README.md"); }} className="underline underline-offset-2 cursor-pointer hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>StateQ</button>) and received the $60K <a href="https://www.google.com/search?q=what+is+Li+Dak+Sum+fellow&sca_esv=cf639ee39397d013&rlz=1C5AJCO_enUS1197US1197&biw=1470&bih=835&sxsrf=ANbL-n6kguQD72BsO59GEzUuAJgUbYmIpQ%3A1773620211240&ei=80u3abquDsP20PEPyL6soQM&ved=0ahUKEwj686CVkqOTAxVDOzQIHUgfKzQQ4dUDCBE&uact=5&oq=what+is+Li+Dak+Sum+fellow&gs_lp=Egxnd3Mtd2l6LXNlcnAiGXdoYXQgaXMgTGkgRGFrIFN1bSBmZWxsb3cyBRAhGKABSJAoUABY3CZwAXgBkAEAmAGFAaABmg2qAQQ2LjEwuAEDyAEA-AEBmAIOoAKLC8ICCBAhGKABGMMEwgIHECEYoAEYCpgDAJIHAzYuOKAHviKyBwM1Lji4B4gLwgcEMy4xMcgHFIAIAA&sclient=gws-wiz-serp" target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="underline hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>Li Dak Sum Fellowship</a>.</>,
           <>Interned at <a href="https://www.google.com/search?q=what+is+UKRI+Trustworthy+Autonomous+System+Hub&sca_esv=cf639ee39397d013&rlz=1C5AJCO_enUS1197US1197&biw=1470&bih=835&sxsrf=ANbL-n6C8YB0sWpPT38eeKWpicMc3vpkDg%3A1773620771391&ei=I063aZXEF_uNm9cP4MaP4AE&ved=0ahUKEwjV4a2glKOTAxX7xuYEHWDjAxwQ4dUDCBE&uact=5&oq=what+is+UKRI+Trustworthy+Autonomous+System+Hub&gs_lp=Egxnd3Mtd2l6LXNlcnAiLndoYXQgaXMgVUtSSSBUcnVzdHdvcnRoeSBBdXRvbm9tb3VzIFN5c3RlbSBIdWIyBRAhGKABSNqqAVC6BVj8pwFwD3gBkAEBmAGFAqABoiaqAQc0MC4xMy4xuAEDyAEA-AEBmAJEoAKHJsICChAAGLADGNYEGEfCAgoQIxiABBgnGIoFwgIIEAAYgAQYywHCAggQLhiABBjLAcICBBAAGB7CAgYQABgIGB7CAggQABiABBiiBMICBRAAGO8FwgIHECEYoAEYCsICBBAhGAqYAwCIBgGQBgGSBwU1Mi4xNqAH1a4BsgcFMzcuMTa4B9slwgcGOS41NC41yAdvgAgA&sclient=gws-wiz-serp" target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="underline hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>UKRI TAS</a> and <a href="https://www.google.com/search?q=what+is+China+Mobile&sca_esv=cf639ee39397d013&rlz=1C5AJCO_enUS1197US1197&biw=1470&bih=835&sxsrf=ANbL-n44YqIj9L-DVPVRt6KuqjDlZ6e2lw%3A1773620408482&ei=uEy3adeOHfu00PEPyODUwAs&ved=0ahUKEwjXyqfzkqOTAxV7GjQIHUgwFbgQ4dUDCBE&uact=5&oq=what+is+China+Mobile&gs_lp=Egxnd3Mtd2l6LXNlcnAiFHdoYXQgaXMgQ2hpbmEgTW9iaWxlMggQABiABBjLATIIEAAYgAQYywEyCBAAGIAEGMsBMgQQABgeMgQQABgeMgQQABgeMgQQABgeMgQQABgeMgQQABgeMgQQABgeSONyULIEWMNxcAF4AZABAJgBZaABqA2qAQQxOS4xuAEDyAEA-AEBmAIVoAKBDqgCCsICBxAjGCcY6gLCAgQQIxgnwgIKECMYgAQYJxiKBcICCxAuGIAEGNEDGMcBwgIFEAAYgATCAgoQABiABBhDGIoFwgIOEC4YgAQYxwEYjgUYrwHCAggQLhiABBjLAZgDBfEFTZqpZ-o9LD2SBwQxNS42oAeAe7IHBDE0Nja4B_wNwgcGMC44LjEzyAc-gAgA&sclient=gws-wiz-serp" target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="underline hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>China Mobile</a>, working on voice AI and agent-related research and engineering.</>,
           <>Won multiple hackathons, including <a href="https://www.linkedin.com/posts/heathsun_ai-hackathon-agenticai-activity-7357069306276290560-l0CC?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEboMJ8B6_eFT-ETRpHba3LKxkSctgFITYw" target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="underline hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>2nd place</a> in the AI agent track at China&apos;s largest hackathon, <a href="https://www.google.com/search?q=what+is+AdventureX+hackathon+china&sca_esv=cf639ee39397d013&rlz=1C5AJCO_enUS1197US1197&biw=1470&bih=835&sxsrf=ANbL-n6arT7vwv6SwxxZsmxNxGJ57yUWLQ%3A1773620340095&ei=dEy3adHIBffO0PEP9uLGsQo&ved=0ahUKEwjR0tnSkqOTAxV3JzQIHXaxMaYQ4dUDCBE&uact=5&oq=what+is+AdventureX+hackathon+china&gs_lp=Egxnd3Mtd2l6LXNlcnAiIndoYXQgaXMgQWR2ZW50dXJlWCBoYWNrYXRob24gY2hpbmEyBRAhGKABSMgVUJEDWMQUcAF4AJABAJgBtAGgAf8MqgEEMTAuNrgBA8gBAPgBAZgCEKAC6QzCAgoQABiwAxjWBBhHwgIIEAAYgAQYogTCAgUQABjvBcICBxAhGKABGAqYAwCIBgGQBgOSBwQxMC42oAfOMLIHAzkuNrgH5AzCBwQ0LjEyyAcXgAgA&sclient=gws-wiz-serp" target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="underline hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>AdventureX</a> (8K+ developers applied).</>,
         ].map((item, i) => (
