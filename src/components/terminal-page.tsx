@@ -1236,7 +1236,7 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
   return (
     <div className="space-y-4 my-1">
       {/* step 0 — Portrait + Bio */}
-      <div className="flex gap-6 items-stretch">
+      <div className="flex gap-6 items-start">
         {ascii ? (
           <pre className="text-[6px] leading-[1.2] text-white/55 shrink-0 whitespace-pre select-none">
             {ascii}
@@ -1246,7 +1246,7 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
             rendering...
           </div>
         )}
-        <div className="flex flex-col min-h-[180px] flex-1 min-w-0 py-2">
+        <div className="flex flex-col flex-1 min-w-0 py-2">
           <div className="flex flex-col gap-0.5">
             <div style={{ color: ACCENT }}>Heath Sun</div>
             <div className="text-white/40 mt-0.5">Mountain View, CA</div>
@@ -1264,39 +1264,42 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
             <div className="text-white/55">Ex-ZhenFund EIR · Li Dak Sum Research Fellow</div>
             <div className="text-white/55"></div>
           </div>
-          {/* Funnel: Coffee + LinkedIn (primary); X + email + GitHub (secondary). Pinned to bottom of portrait column. */}
-          <div className="mt-auto pt-4 border-t border-white/[0.06] w-full">
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 justify-start text-left font-mono">
+          {/* Funnel: sits on divider directly under bio (aligned with ascii band, not stretched to column bottom). */}
+          <div className="mt-3 pt-3 border-t border-white/[0.12] w-full">
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-left font-mono font-normal">
               <button
                 type="button"
                 onClick={e => { e.stopPropagation(); onClickItem("cat .coffee.txt"); }}
-                className="shrink-0 font-medium hover:opacity-90 transition-opacity cursor-pointer bg-transparent border-0 p-0"
-                style={{ color: ACCENT }}>
+                className="shrink-0 font-medium cursor-pointer bg-transparent border-0 p-0 text-[#08fff3] hover:text-[#b5fff9] transition-colors duration-150">
                 Coffee
               </button>
               <a href="https://www.linkedin.com/in/heathsun/" target="_blank" rel="noopener noreferrer"
                  onClick={e => e.stopPropagation()}
-                 className="shrink-0 font-medium hover:opacity-90 transition-opacity"
-                 style={{ color: ACCENT }}>
+                 className="shrink-0 font-medium text-[#08fff3] hover:text-[#b5fff9] transition-colors duration-150">
                 LinkedIn
               </a>
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-white/50">
+              <div className="flex flex-wrap items-center gap-x-4 text-white/50">
                 <a href="https://x.com/1HeathSun" target="_blank" rel="noopener noreferrer"
                    onClick={e => e.stopPropagation()}
-                   className="hover:text-white/70 transition-colors">
+                   className="hover:text-white transition-colors duration-150">
                   X
                 </a>
                 <a href="https://github.com/HS1CMU" target="_blank" rel="noopener noreferrer"
                    onClick={e => e.stopPropagation()}
-                   className="hover:text-white/70 transition-colors">
+                   className="hover:text-white transition-colors duration-150">
                   GitHub
                 </a>
-                <a href="mailto:heathsun@cmu.edu"
+                <a href="https://www.instagram.com/heath_sun111/" target="_blank" rel="noopener noreferrer"
                    onClick={e => e.stopPropagation()}
-                   className="hover:text-white/70 transition-colors truncate max-w-[min(100%,11rem)]">
-                  heathsun@cmu.edu
+                   className="hover:text-white transition-colors duration-150">
+                  Instagram
                 </a>
               </div>
+              <a href="mailto:heathsun@cmu.edu"
+                 onClick={e => e.stopPropagation()}
+                 className="ml-auto text-white/50 hover:text-white transition-colors duration-150 truncate max-w-[min(100%,14rem)]">
+                heathsun@cmu.edu
+              </a>
             </div>
           </div>
         </div>
