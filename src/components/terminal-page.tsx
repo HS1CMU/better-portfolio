@@ -1368,7 +1368,7 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
               <a href="https://www.heathsun.dev/blog/ideas" target="_blank" rel="noopener noreferrer"
                  onClick={e => e.stopPropagation()}
                  className="hover:opacity-70 transition-opacity text-white/70">
-                <span className="text-white font-headline">Ideas Are More Important Than Execution</span>
+                <span className="text-white font-essayTitle">Ideas Are More Important Than Execution</span>
               </a>
               <span className="text-white/40">{" (2026)"}</span>
             </span>
@@ -1385,7 +1385,7 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
               <a href="https://www.heathsun.dev/blog/middle-layer" target="_blank" rel="noopener noreferrer"
                  onClick={e => e.stopPropagation()}
                  className="hover:opacity-70 transition-opacity text-white/70">
-                <span className="text-white font-headline">The Middle Layer Has No Moat</span>
+                <span className="text-white font-essayTitle">The Middle Layer Has No Moat</span>
               </a>
               <span className="text-white/40">{" (2026)"}</span>
             </span>
@@ -1402,7 +1402,7 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
               <a href="https://www.heathsun.dev/blog/gui" target="_blank" rel="noopener noreferrer"
                  onClick={e => e.stopPropagation()}
                  className="hover:opacity-70 transition-opacity text-white/70">
-                <span className="text-white font-headline">The Best Interface in the AI Era Is Still a GUI</span>
+                <span className="text-white font-essayTitle">The Best Interface in the AI Era Is Still a GUI</span>
               </a>
               <span className="text-white/40">{" (2026)"}</span>
             </span>
@@ -1419,8 +1419,8 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
               <a href="https://www.heathsun.dev/blog/mysticism" target="_blank" rel="noopener noreferrer"
                  onClick={e => e.stopPropagation()}
                  className="hover:opacity-70 transition-opacity text-white/70">
-                <span className="text-white font-headline">Mysticism in the Age of AI:</span>
-                <span className="text-white font-headline">{" How to Quantitatively Compare Divination Systems?"}</span>
+                <span className="text-white font-essayTitle">Mysticism in the Age of AI:</span>
+                <span className="text-white font-essayTitle">{" How to Quantitatively Compare Divination Systems?"}</span>
               </a>
               <span className="text-white/40">{" (2022)"}</span>
             </span>

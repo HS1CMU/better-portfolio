@@ -21,6 +21,12 @@ const fontHeadline = localFont({
   display: "swap",
 });
 
+const fontEssayTitle = localFont({
+  src: "../../public/perfectly-nineties-regular.otf",
+  variable: "--font-essay-title",
+  display: "swap",
+});
+
 const fontMono = localFont({
   src: [
     { path: "../../public/SFMono-Regular.otf",      weight: "400", style: "normal" },
@@ -94,6 +100,7 @@ export default function RootLayout({
           "min-h-screen bg-background font-mono antialiased max-w-2xl mx-auto py-12 sm:py-24 px-6",
           fontText.variable,
           fontHeadline.variable,
+          fontEssayTitle.variable,
           fontMono.variable,
           fontSerif.variable
         )}
