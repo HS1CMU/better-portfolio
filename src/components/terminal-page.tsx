@@ -1226,6 +1226,17 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
   const { data: contribData, total: contribTotal } = useGitHubContribs("HS1CMU");
   const [step, setStep] = useState(0);
   const [hoveredRow, setHoveredRow] = useState<number | null>(null);
+  const HYPERCUE_VIDEOS = [
+    "https://assets.hypercue.ai/assets/Script-Mode.mp4",
+    "https://assets.hypercue.ai/assets/Reflex-Demo.mp4",
+    "https://assets.hypercue.ai/assets/KB-Deck.mp4",
+  ];
+  const [videoHovered, setVideoHovered] = useState(false);
+  const [videoIdx, setVideoIdx] = useState(0);
+  const cycleVideoRef = useRef<HTMLVideoElement>(null);
+  useEffect(() => {
+    cycleVideoRef.current?.play();
+  }, [videoIdx]);
   const activeRow = hoveredRow ?? 0;
   useEffect(() => {
     if (step >= 7) return;
@@ -1258,6 +1269,32 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
                 Hypercue
               </a>
               <span className="text-white/55">{" — AI for live speaking"}</span>
+            </div>
+            <div
+              className="relative mt-2 cursor-pointer overflow-hidden rounded"
+              style={{ width: 260 }}
+              onMouseEnter={() => setVideoHovered(true)}
+              onMouseLeave={() => setVideoHovered(false)}
+              onClick={e => { e.stopPropagation(); window.open("https://www.hypercue.ai/demo", "_blank"); }}
+            >
+              <video
+                ref={cycleVideoRef}
+                key={videoIdx}
+                src={HYPERCUE_VIDEOS[videoIdx]}
+                autoPlay
+                muted
+                playsInline
+                onEnded={() => setVideoIdx(i => (i + 1) % HYPERCUE_VIDEOS.length)}
+                style={{
+                  display: "block",
+                  width: "100%",
+                  filter: videoHovered
+                    ? "grayscale(0) brightness(1)"
+                    : "grayscale(1) brightness(0.28)",
+                  transition: "filter 0.5s ease",
+                  pointerEvents: "none",
+                }}
+              />
             </div>
             <div className="h-4" />
             <div className="text-white/55">CMU (M.S. SM) · Oxford (AI) · Nottingham (B.S. CS)</div>
