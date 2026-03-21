@@ -1250,21 +1250,14 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
           <div className="flex flex-col gap-0.5">
             <div style={{ color: ACCENT }}>Heath Sun</div>
             <div className="text-white/40 mt-0.5">Mountain View, CA</div>
-            <div className="text-white/40">Building AI infrastructure for human communication</div>
-            <div className="h-3" />
-            <div className="space-y-1.5 text-white/80">
-              <div className="text-white/35 text-[11px] tracking-wide font-mono">CURRENT FOCUS</div>
-              <div className="flex gap-2 leading-relaxed items-baseline">
-                <span style={{ color: ACCENT }} className="text-base">→</span>
-                <span>
-                  <a href="https://hypercue.ai" target="_blank" rel="noopener noreferrer"
-                     onClick={e => e.stopPropagation()}
-                     className="hover:opacity-70 transition-opacity font-medium" style={{ color: ACCENT }}>
-                    Hypercue
-                  </a>
-                  <span className="text-white/70">{" — AI for live speaking"}</span>
-                </span>
-              </div>
+            <div className="text-white/40 leading-relaxed">
+              Building{" "}
+              <a href="https://hypercue.ai" target="_blank" rel="noopener noreferrer"
+                 onClick={e => e.stopPropagation()}
+                 className="hover:opacity-70 transition-opacity font-medium" style={{ color: ACCENT }}>
+                Hypercue
+              </a>
+              <span className="text-white/55">{" — AI for live speaking"}</span>
             </div>
             <div className="h-4" />
             <div className="text-white/55">CMU (M.S. SM) · Oxford (AI) · Nottingham (B.S. CS)</div>
