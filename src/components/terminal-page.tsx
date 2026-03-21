@@ -1367,8 +1367,8 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
             <span>
               <a href="https://www.heathsun.dev/blog/ideas" target="_blank" rel="noopener noreferrer"
                  onClick={e => e.stopPropagation()}
-                 className="hover:opacity-70 transition-opacity text-white/70">
-                <span className="text-white font-mono font-semibold">Ideas Are More Important Than Execution</span>
+                 className="font-mono text-white/70 hover:text-white transition-colors cursor-pointer shrink-0">
+                Ideas Are More Important Than Execution
               </a>
               <span className="text-white/40">{" (2026)"}</span>
             </span>
@@ -1384,8 +1384,8 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
             <span>
               <a href="https://www.heathsun.dev/blog/middle-layer" target="_blank" rel="noopener noreferrer"
                  onClick={e => e.stopPropagation()}
-                 className="hover:opacity-70 transition-opacity text-white/70">
-                <span className="text-white font-mono font-semibold">The Middle Layer Has No Moat</span>
+                 className="font-mono text-white/70 hover:text-white transition-colors cursor-pointer shrink-0">
+                The Middle Layer Has No Moat
               </a>
               <span className="text-white/40">{" (2026)"}</span>
             </span>
@@ -1401,8 +1401,8 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
             <span>
               <a href="https://www.heathsun.dev/blog/gui" target="_blank" rel="noopener noreferrer"
                  onClick={e => e.stopPropagation()}
-                 className="hover:opacity-70 transition-opacity text-white/70">
-                <span className="text-white font-mono font-semibold">The Best Interface in the AI Era Is Still a GUI</span>
+                 className="font-mono text-white/70 hover:text-white transition-colors cursor-pointer shrink-0">
+                The Best Interface in the AI Era Is Still a GUI
               </a>
               <span className="text-white/40">{" (2026)"}</span>
             </span>
@@ -1418,10 +1418,8 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
             <span>
               <a href="https://www.heathsun.dev/blog/mysticism" target="_blank" rel="noopener noreferrer"
                  onClick={e => e.stopPropagation()}
-                 className="hover:opacity-70 transition-opacity text-white/70">
-                <span className="text-white font-mono font-semibold">
-                  Mysticism in the Age of AI: How to Quantitatively Compare Divination Systems?
-                </span>
+                 className="font-mono text-white/70 hover:text-white transition-colors cursor-pointer shrink-0">
+                Mysticism in the Age of AI: How to Quantitatively Compare Divination Systems?
               </a>
               <span className="text-white/40">{" (2022)"}</span>
             </span>
