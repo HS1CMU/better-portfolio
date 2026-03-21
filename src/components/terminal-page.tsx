@@ -1223,7 +1223,7 @@ function ContribGraphSection() {
 // ─── Brief section ────────────────────────────────────────────────────────────
 function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
   const ascii = useAsciiMedia("/AI1.jpg", 60, 0.55);
-  const { data: contribData, total: contribTotal } = useGitHubContribs("HS1CMU");
+  const { data: contribData } = useGitHubContribs("HS1CMU");
   const [step, setStep] = useState(0);
   const [hoveredRow, setHoveredRow] = useState<number | null>(null);
   const activeRow = hoveredRow ?? 0;
@@ -1262,9 +1262,6 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
             <a href="https://www.linkedin.com/in/heathsun/" target="_blank" rel="noopener noreferrer"
                onClick={e => e.stopPropagation()}
                className="hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>LinkedIn</a>
-            <a href="https://github.com/HS1CMU" target="_blank" rel="noopener noreferrer"
-               onClick={e => e.stopPropagation()}
-               className="hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>GitHub</a>
             <a href="mailto:heathsun@cmu.edu"
                onClick={e => e.stopPropagation()}
                className="hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>heathsun@cmu.edu</a>
@@ -1308,11 +1305,9 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
         ))}
       </div>}
 
-      {/* step 3 — GitHub contribution graph */}
+      {/* step 3 — contribution graph (no GitHub link; data still from profile) */}
       {step >= 3 && <div className="space-y-2">
-        <div className="text-white/30">
-          {"  "}@HS1CMU
-        </div>
+        <div className="text-white/30 mb-1">  CONTRIBUTIONS</div>
         <div className="pl-2"><ContribGraph data={contribData} /></div>
       </div>}
 
