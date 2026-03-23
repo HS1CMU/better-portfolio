@@ -663,7 +663,7 @@ export default function TerminalPage({ nameAscii }: { nameAscii: string }) {
         mk.kv("NAME",          "Heath Sun"),
         mk.kv("LOCATION",      "Mountain View, CA"),
         mk.kv("EDUCATION",     "CMU (M.S. SM) · Oxford (AI) · Nottingham (B.S. CS)"),
-        mk.kv("INFO",          "Ex-ZhenFund EIR · Li Dak Sum Research Fellow"),
+        mk.kv("INFO",          "Ex-ZhenFund Founder Resident · Li Dak Sum Research Fellow"),
         mk.kv("CURRENT_FOCUS", "Building Hypercue, AI for live speaking."),
         mk.b(),
       ]);
@@ -741,7 +741,7 @@ export default function TerminalPage({ nameAscii }: { nameAscii: string }) {
           "",
           "  CMU (M.S. SM) · Oxford (AI) · Nottingham (B.S. CS)",
           "",
-          "  Ex-ZhenFund EIR · Li Dak Sum Research Fellow.",
+          "  Ex-ZhenFund Founder Resident · Li Dak Sum Research Fellow.",
           "  ════════════════════════════════════════════",
         ].join("\n");
         push([mk.b()]);
@@ -1298,7 +1298,7 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
             </div>
             <div className="h-4" />
             <div className="text-white/55">CMU (M.S. SM) · Oxford (AI) · Nottingham (B.S. CS)</div>
-            <div className="text-white/55">Ex-ZhenFund EIR · Li Dak Sum Research Fellow</div>
+            <div className="text-white/55">Ex-ZhenFund Founder Resident · Li Dak Sum Research Fellow</div>
             <div className="text-white/55"></div>
           </div>
         </div>
