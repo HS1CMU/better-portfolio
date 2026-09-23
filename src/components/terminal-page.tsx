@@ -3,7 +3,7 @@
 import React, { useEffect, useState, useCallback, useRef, useMemo } from "react";
 import NextImage from "next/image";
 
-const ACCENT = "#08fff3";
+const ACCENT = "#000000";
 
 // ─── Project data ─────────────────────────────────────────────────────────────
 const PROJECTS = [
@@ -354,10 +354,10 @@ function useGitHubContribs(username: string) {
 }
 
 const LEVEL_COLORS: Record<number, string> = {
-  0: `rgba(8,255,243,0.06)`,
-  1: `rgba(8,255,243,0.25)`,
-  2: `rgba(8,255,243,0.45)`,
-  3: `rgba(8,255,243,0.7)`,
+  0: `rgba(0,0,0,0.06)`,
+  1: `rgba(0,0,0,0.25)`,
+  2: `rgba(0,0,0,0.45)`,
+  3: `rgba(0,0,0,0.7)`,
   4: ACCENT,
 };
 
@@ -383,7 +383,7 @@ function ContribGraph({ data }: { data: ContribDay[] }) {
     return result;
   }, [data]);
 
-  if (!data.length) return <div className="text-white/20 italic">loading contributions...</div>;
+  if (!data.length) return <div className="text-black/85 italic">loading contributions...</div>;
 
   return (
     <div className="flex gap-[2px]">
@@ -424,7 +424,7 @@ function useAsciiMedia(src: string | undefined, cols: number, ratio = 0.5): stri
         for (let x = 0; x < canvas.width; x++) {
           const i = (y * canvas.width + x) * 4;
           const l = (0.299 * d[i] + 0.587 * d[i + 1] + 0.114 * d[i + 2]) / 255;
-          o += ASCII_CHARS[Math.floor(l * (ASCII_CHARS.length - 1))];
+          o += ASCII_CHARS[Math.floor((1 - l) * (ASCII_CHARS.length - 1))];
         }
         o += "\n";
       }
@@ -791,7 +791,7 @@ export default function TerminalPage({ nameAscii }: { nameAscii: string }) {
               <div className="my-2 ml-2">
                 <iframe
                   src="https://www.google.com/maps/embed?hl=en&pb=!4v1710000000000!6m8!1m7!1sxKIpTH5T9qHrHuKZGvX9oA!2m2!1d37.3936759!2d-122.0791116!3f254.04!4f-2.65!5f0.7820865974627469"
-                  className="w-full max-w-[480px] h-[280px] rounded border border-white/10"
+                  className="w-full max-w-[480px] h-[280px] rounded border border-black/10"
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
@@ -921,14 +921,14 @@ export default function TerminalPage({ nameAscii }: { nameAscii: string }) {
     <>
       {/* Terminal window */}
       <div
-        className="fixed inset-0 bg-black text-white font-mono z-[100] flex flex-col"
+        className="fixed inset-0 bg-white text-black font-mono z-[100] flex flex-col"
         onClick={() => inputRef.current?.focus()}
       >
         {/* Title bar */}
-        <div className="shrink-0 border-b border-white/10 px-5 py-1.5 flex items-center gap-2 text-xs">
-          <span className="text-white/10 text-[10px]">●  ●  ●</span>
-          <span className="mx-auto text-white/30">visitor@cli.heathsun.dev</span>
-          <span className="text-white/15">zsh</span>
+        <div className="shrink-0 border-b border-black/10 px-5 py-1.5 flex items-center gap-2 text-xs">
+          <span className="text-black/75 text-[10px]">●  ●  ●</span>
+          <span className="mx-auto text-black/75">visitor@cli.heathsun.dev</span>
+          <span className="text-black/80">zsh</span>
         </div>
 
         {/* Output */}
@@ -939,7 +939,7 @@ export default function TerminalPage({ nameAscii }: { nameAscii: string }) {
 
           {/* Typewriter streaming */}
           {typingDisplay && (
-            <div className="text-white/85 whitespace-pre-wrap">
+            <div className="text-black whitespace-pre-wrap">
               {typingDisplay}
               <span
                 className="inline-block w-[0.55em] h-[1.1em] align-middle"
@@ -951,8 +951,8 @@ export default function TerminalPage({ nameAscii }: { nameAscii: string }) {
           {/* Active input line */}
           {!isTyping && (
             <div className="flex items-baseline flex-wrap mt-0.5">
-              <span className="text-white/45 shrink-0 whitespace-pre">{promptStr}</span>
-              <span className="text-white/90 whitespace-pre">{input}</span>
+              <span className="text-black/80 shrink-0 whitespace-pre">{promptStr}</span>
+              <span className="text-black whitespace-pre">{input}</span>
               <span
                 className="inline-block w-[0.55em] h-[1.1em] align-middle"
                 style={blink ? { backgroundColor: ACCENT } : undefined}
@@ -1005,42 +1005,42 @@ function HistoryLine({
 
     case "text":
       return (
-        <div className={`whitespace-pre ${line.dim ? "text-white/35" : "text-white/85"}`}>
+        <div className={`whitespace-pre ${line.dim ? "text-black/80" : "text-black"}`}>
           {line.text}
         </div>
       );
 
     case "rich":
-      return <div className="whitespace-pre text-white/85">{line.node}</div>;
+      return <div className="whitespace-pre text-black">{line.node}</div>;
 
     case "help-row":
       return (
         <div className="flex items-baseline whitespace-pre">
-          <span className="text-white/85">{"  "}</span>
+          <span className="text-black">{"  "}</span>
           <button
             onClick={e => { e.stopPropagation(); onClickItem(line.cmd); }}
-            className="text-white hover:opacity-70 transition-opacity cursor-pointer shrink-0"
+            className="text-black hover:opacity-70 transition-opacity cursor-pointer shrink-0"
             style={{ width: "18ch", textAlign: "left" }}
           >
             {line.cmd}
           </button>
-          <span className="text-white/40">{line.desc}</span>
+          <span className="text-black/80">{line.desc}</span>
         </div>
       );
 
     case "cmd":
       return (
         <div className="flex flex-wrap items-baseline mt-1">
-          <span className="text-white/40 shrink-0 whitespace-pre">{prompt(line.dir)}</span>
-          <span className="text-white/80">{line.cmd}</span>
+          <span className="text-black/80 shrink-0 whitespace-pre">{prompt(line.dir)}</span>
+          <span className="text-black">{line.cmd}</span>
         </div>
       );
 
     case "kv":
       return (
         <div className="flex gap-2">
-          <span className="text-white/40 w-28 shrink-0">{line.key}:</span>
-          <span className="text-white/85">
+          <span className="text-black/80 w-28 shrink-0">{line.key}:</span>
+          <span className="text-black">
             {line.key === "CURRENT_FOCUS"
               ? <>Building{" "}
                   <a href="https://www.hypercue.ai/" target="_blank" rel="noopener noreferrer"
@@ -1094,7 +1094,7 @@ function HistoryLine({
           alt=""
           width={480}
           height={320}
-          className="my-2 max-w-[480px] max-h-[320px] w-auto h-auto object-contain rounded border border-white/10"
+          className="my-2 max-w-[480px] max-h-[320px] w-auto h-auto object-contain rounded border border-black/10"
           unoptimized
         />
       );
@@ -1118,16 +1118,16 @@ function LsRow({
 }) {
   return (
     <div className="flex items-baseline gap-3">
-      <span className="text-white/30 shrink-0">{perms}</span>
+      <span className="text-black/75 shrink-0">{perms}</span>
       <button
         onClick={e => { e.stopPropagation(); onClick(); }}
         className={`hover:underline underline-offset-2 cursor-pointer shrink-0 ${
-          isDir ? "text-white/90 font-semibold" : "text-white/70"
+          isDir ? "text-black font-semibold" : "text-black/90"
         }`}
       >
         {name}
       </button>
-      {comment && <span className="text-white/25">{comment}</span>}
+      {comment && <span className="text-black/70">{comment}</span>}
     </div>
   );
 }
@@ -1139,17 +1139,17 @@ function ProjectRow({
 }) {
   return (
     <div className="flex items-baseline gap-3">
-      <span className="text-white/30 shrink-0">drwxr-xr-x</span>
+      <span className="text-black/75 shrink-0">drwxr-xr-x</span>
       <button
         onClick={e => { e.stopPropagation(); onClick(); }}
-        className="text-white/85 font-semibold hover:underline underline-offset-2 cursor-pointer shrink-0"
+        className="text-black font-semibold hover:underline underline-offset-2 cursor-pointer shrink-0"
       >
         {project.id}/
       </button>
       {project.hot && (
         <span className="text-[10px] shrink-0 opacity-80" style={{ color: ACCENT }}>𒀭</span>
       )}
-      <span className="text-white/35 truncate">— {project.tagline}</span>
+      <span className="text-black/80 truncate">— {project.tagline}</span>
     </div>
   );
 }
@@ -1163,7 +1163,7 @@ function DemoButton({
   if (!proj) return null;
   const hasSecond = "secondUrl" in proj && proj.secondUrl;
   if (!proj.liveUrl && !proj.videoUrl && !hasSecond) return null;
-  const linkCls = "border border-white/25 px-3 py-1 text-xs text-white/70 transition-colors cursor-pointer";
+  const linkCls = "border border-black/25 px-3 py-1 text-xs text-black/90 transition-colors cursor-pointer";
   const onEnter = (e: React.MouseEvent<HTMLElement>) => { e.currentTarget.style.borderColor = ACCENT; e.currentTarget.style.color = ACCENT; };
   const onLeave = (e: React.MouseEvent<HTMLElement>) => { e.currentTarget.style.borderColor = ""; e.currentTarget.style.color = ""; };
   return (
@@ -1199,11 +1199,11 @@ function DemoButton({
 function AsciiLine({ src, cols }: { src: string; cols: number }) {
   const ascii = useAsciiMedia(src, cols, 0.6);
   return ascii ? (
-    <pre className="text-[4.5px] leading-[1] text-white/65 overflow-x-hidden whitespace-pre my-1">
+    <pre className="text-[4.5px] leading-[1] text-black/90 overflow-x-hidden whitespace-pre my-1">
       {ascii}
     </pre>
   ) : (
-    <div className="text-white/20 text-xs italic my-1">  rendering ascii art...</div>
+    <div className="text-black/85 text-xs italic my-1">  rendering ascii art...</div>
   );
 }
 
@@ -1212,7 +1212,7 @@ function ContribGraphSection() {
   const { data, total } = useGitHubContribs("HS1CMU");
   return (
     <div className="my-2 space-y-2">
-      <div className="text-white/40">
+      <div className="text-black/80">
         {"  "}@HS1CMU
       </div>
       <div className="pl-2"><ContribGraph data={data} /></div>
@@ -1249,33 +1249,33 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
       {/* step 0 — Portrait + Bio */}
       <div className="flex gap-6 items-start">
         {ascii ? (
-          <pre className="text-[6px] leading-[1.2] text-white/55 shrink-0 whitespace-pre select-none">
+          <pre className="text-[6px] leading-[1.2] text-black/85 shrink-0 whitespace-pre select-none">
             {ascii}
           </pre>
         ) : (
-          <div className="text-white/20 italic shrink-0 w-[220px] h-[180px] flex items-center justify-center">
+          <div className="text-black/85 italic shrink-0 w-[220px] h-[180px] flex items-center justify-center">
             rendering...
           </div>
         )}
         <div className="flex flex-col flex-1 min-w-0 py-2">
           <div className="flex flex-col gap-0.5">
             <div style={{ color: ACCENT }}>Heath Sun</div>
-            <div className="text-white/40 mt-0.5">Mountain View, CA</div>
-            <div className="text-white/40 leading-relaxed">
+            <div className="text-black/80 mt-0.5">Mountain View, CA</div>
+            <div className="text-black/80 leading-relaxed">
               Building{" "}
               <a href="https://hypercue.ai" target="_blank" rel="noopener noreferrer"
                  onClick={e => e.stopPropagation()}
                  className="hover:opacity-70 transition-opacity font-medium" style={{ color: ACCENT }}>
                 Hypercue
               </a>
-              <span className="text-white/55">{" — AI for live speaking"}</span>
+              <span className="text-black/85">{" — AI for live speaking"}</span>
             </div>
             <div
               className="relative mt-2 cursor-pointer overflow-hidden rounded"
               style={{ width: 260 }}
               onMouseEnter={() => setVideoHovered(true)}
               onMouseLeave={() => setVideoHovered(false)}
-              onClick={e => { e.stopPropagation(); window.open("https://www.hypercue.ai/demo", "_blank"); }}
+              onClick={e => { e.stopPropagation(); window.open("https://www.hypercue.ai", "_blank"); }}
             >
               <video
                 ref={cycleVideoRef}
@@ -1290,23 +1290,23 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
                   width: "100%",
                   filter: videoHovered
                     ? "grayscale(0) brightness(1)"
-                    : "grayscale(1) brightness(0.28)",
+                    : "grayscale(1) brightness(1)",
                   transition: "filter 0.5s ease",
                   pointerEvents: "none",
                 }}
               />
             </div>
             <div className="h-4" />
-            <div className="text-white/55">CMU (M.S. SM) · Oxford (AI) · Nottingham (B.S. CS)</div>
-            <div className="text-white/55">Ex-ZhenFund Founder Resident · Li Dak Sum Research Fellow</div>
-            <div className="text-white/55"></div>
+            <div className="text-black/85">CMU (M.S. SM) · Oxford (AI) · Nottingham (B.S. CS)</div>
+            <div className="text-black/85">Ex-ZhenFund Founder Resident · Li Dak Sum Research Fellow</div>
+            <div className="text-black/85"></div>
           </div>
         </div>
       </div>
 
       {/* step 1 — Essays */}
       {step >= 1 && <div onMouseLeave={() => setHoveredRow(null)}>
-        <div className="text-white/30 mb-1">  ESSAYS</div>
+        <div className="text-black/75 mb-1">  ESSAYS</div>
         <div className="space-y-1 pl-2">
           <div className="flex gap-2 leading-relaxed"
             onMouseEnter={() => setHoveredRow(9)}
@@ -1314,15 +1314,15 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
             <span className="shrink-0 w-3 text-center inline-block">
               {activeRow === 9
                 ? <span className="text-[10px] opacity-80" style={{ color: ACCENT }}>𒀭</span>
-                : <span className="text-white/25">·</span>}
+                : <span className="text-black/70">·</span>}
             </span>
             <span>
               <a href="https://www.heathsun.dev/blog/ideas" target="_blank" rel="noopener noreferrer"
                  onClick={e => e.stopPropagation()}
-                 className="font-mono text-white/70 hover:text-white transition-colors cursor-pointer shrink-0">
+                 className="font-mono text-black/90 hover:text-black transition-colors cursor-pointer shrink-0">
                 Ideas Are More Important Than Execution
               </a>
-              <span className="text-white/40">{" (2026)"}</span>
+              <span className="text-black/80">{" (2026)"}</span>
             </span>
           </div>
           <div className="flex gap-2 leading-relaxed"
@@ -1331,15 +1331,15 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
             <span className="shrink-0 w-3 text-center inline-block">
               {activeRow === 11
                 ? <span className="text-[10px] opacity-80" style={{ color: ACCENT }}>𒀭</span>
-                : <span className="text-white/25">·</span>}
+                : <span className="text-black/70">·</span>}
             </span>
             <span>
               <a href="https://www.heathsun.dev/blog/middle-layer" target="_blank" rel="noopener noreferrer"
                  onClick={e => e.stopPropagation()}
-                 className="font-mono text-white/70 hover:text-white transition-colors cursor-pointer shrink-0">
+                 className="font-mono text-black/90 hover:text-black transition-colors cursor-pointer shrink-0">
                 The Middle Layer Has No Moat
               </a>
-              <span className="text-white/40">{" (2026)"}</span>
+              <span className="text-black/80">{" (2026)"}</span>
             </span>
           </div>
           <div className="flex gap-2 leading-relaxed"
@@ -1348,15 +1348,15 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
             <span className="shrink-0 w-3 text-center inline-block">
               {activeRow === 12
                 ? <span className="text-[10px] opacity-80" style={{ color: ACCENT }}>𒀭</span>
-                : <span className="text-white/25">·</span>}
+                : <span className="text-black/70">·</span>}
             </span>
             <span>
               <a href="https://www.heathsun.dev/blog/gui" target="_blank" rel="noopener noreferrer"
                  onClick={e => e.stopPropagation()}
-                 className="font-mono text-white/70 hover:text-white transition-colors cursor-pointer shrink-0">
+                 className="font-mono text-black/90 hover:text-black transition-colors cursor-pointer shrink-0">
                 GUIs Are Not Going Anywhere
               </a>
-              <span className="text-white/40">{" (2026)"}</span>
+              <span className="text-black/80">{" (2026)"}</span>
             </span>
           </div>
           <div className="flex gap-2 leading-relaxed"
@@ -1365,23 +1365,23 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
             <span className="shrink-0 w-3 text-center inline-block">
               {activeRow === 13
                 ? <span className="text-[10px] opacity-80" style={{ color: ACCENT }}>𒀭</span>
-                : <span className="text-white/25">·</span>}
+                : <span className="text-black/70">·</span>}
             </span>
             <span>
               <a href="https://www.heathsun.dev/blog/mysticism" target="_blank" rel="noopener noreferrer"
                  onClick={e => e.stopPropagation()}
-                 className="font-mono text-white/70 hover:text-white transition-colors cursor-pointer shrink-0">
+                 className="font-mono text-black/90 hover:text-black transition-colors cursor-pointer shrink-0">
                 How to Quantitatively Compare Divination Systems (with AI)?
               </a>
-              <span className="text-white/40">{" (2022)"}</span>
+              <span className="text-black/80">{" (2022)"}</span>
             </span>
           </div>
         </div>
       </div>}
 
       {/* step 2 — PREV */}
-      {step >= 2 && <div className="space-y-1.5 text-white/55 pl-2">
-        <div className="text-white/25 mb-1">PREV</div>
+      {step >= 2 && <div className="space-y-1.5 text-black/85 pl-2">
+        <div className="text-black/70 mb-1">PREV</div>
         {[
           <>Built an AI tarot <button onClick={e => { e.stopPropagation(); onClickItem("cat fate_algo_product/README.md"); }} className="underline underline-offset-2 cursor-pointer hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>app</button> at 19 that reached 22K users; later served as the youngest ZhenResident at <a href="https://www.google.com/search?q=what+is+ZhenFund&sca_esv=cf639ee39397d013&rlz=1C5AJCO_enUS1197US1197&sxsrf=ANbL-n5V0xXLpeWDlO_oQkFOx65vcP30xg%3A1773620042917&ei=Sku3adnXN9730PEPhtnI6Q8&biw=1470&bih=835&ved=0ahUKEwjZpP_EkaOTAxXeOzQIHYYsMv0Q4dUDCBE&uact=5&oq=what+is+ZhenFund&gs_lp=Egxnd3Mtd2l6LXNlcnAiEHdoYXQgaXMgWmhlbkZ1bmQyBRAAGO8FMgUQABjvBTIIEAAYgAQYogQyCBAAGIAEGKIEMggQABiABBiiBEjcC1D2AVjeCnABeACQAQCYAZkBoAG3BqoBAzUuM7gBA8gBAPgBAZgCCaAC6AbCAgsQABiABBiwAxiiBMICCBAAGLADGO8FwgIIEAAYgAQYywHCAgcQABiABBgNwgIGEAAYDRgewgIIEAAYChgNGB7CAgUQIRigAcICBxAhGKABGAqYAwCIBgGQBgSSBwM1LjSgB4sWsgcDNC40uAffBsIHBTAuMy42yAcdgAgA&sclient=gws-wiz-serp" target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="underline hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>ZhenFund</a>, China&apos;s leading VC.</>,
           <>Won China&apos;s 18th <a href="https://www.google.com/search?q=what+is+Challenge+Cup+China&sca_esv=cf639ee39397d013&rlz=1C5AJCO_enUS1197US1197&biw=1470&bih=835&sxsrf=ANbL-n5yvoJ3MVL5HqsyzxJZ-FEMeP5hUg%3A1773620113018&ei=kUu3aeBhhL_Q8Q_xwLPwDQ&ved=0ahUKEwig7rXmkaOTAxWEHzQIHXHgDN4Q4dUDCBE&uact=5&oq=what+is+Challenge+Cup+China&gs_lp=Egxnd3Mtd2l6LXNlcnAiG3doYXQgaXMgQ2hhbGxlbmdlIEN1cCBDaGluYTIIECEYoAEYwwQyCBAhGKABGMMEMggQIRigARjDBEjfCVD4AViICHABeACQAQCYAa4BoAGpCKoBAzMuNrgBA8gBAPgBAZgCBKAChAPCAgoQABiwAxjWBBhHwgIKECEYoAEYwwQYCpgDAIgGAZAGBJIHAzEuM6AHvSOyBwMwLjO4B4ADwgcDMC40yAcHgAgA&sclient=gws-wiz-serp" target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="underline hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>Challenge Cup</a> national first prize in quantum programming (co-created <button type="button" onClick={e => { e.stopPropagation(); onClickItem("cat stateq/README.md"); }} className="underline underline-offset-2 cursor-pointer hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>StateQ</button>) and received the $60K <a href="https://www.google.com/search?q=what+is+Li+Dak+Sum+fellow&sca_esv=cf639ee39397d013&rlz=1C5AJCO_enUS1197US1197&biw=1470&bih=835&sxsrf=ANbL-n6kguQD72BsO59GEzUuAJgUbYmIpQ%3A1773620211240&ei=80u3abquDsP20PEPyL6soQM&ved=0ahUKEwj686CVkqOTAxVDOzQIHUgfKzQQ4dUDCBE&uact=5&oq=what+is+Li+Dak+Sum+fellow&gs_lp=Egxnd3Mtd2l6LXNlcnAiGXdoYXQgaXMgTGkgRGFrIFN1bSBmZWxsb3cyBRAhGKABSJAoUABY3CZwAXgBkAEAmAGFAaABmg2qAQQ2LjEwuAEDyAEA-AEBmAIOoAKLC8ICCBAhGKABGMMEwgIHECEYoAEYCpgDAJIHAzYuOKAHviKyBwM1Lji4B4gLwgcEMy4xMcgHFIAIAA&sclient=gws-wiz-serp" target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="underline hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>Li Dak Sum Fellowship</a>.</>,
@@ -1389,7 +1389,7 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
           <>Won multiple hackathons, including <a href="https://www.linkedin.com/posts/heathsun_ai-hackathon-agenticai-activity-7357069306276290560-l0CC?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEboMJ8B6_eFT-ETRpHba3LKxkSctgFITYw" target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="underline hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>2nd place</a> in the AI agent track at China&apos;s largest hackathon, <a href="https://www.google.com/search?q=what+is+AdventureX+hackathon+china&sca_esv=cf639ee39397d013&rlz=1C5AJCO_enUS1197US1197&biw=1470&bih=835&sxsrf=ANbL-n6arT7vwv6SwxxZsmxNxGJ57yUWLQ%3A1773620340095&ei=dEy3adHIBffO0PEP9uLGsQo&ved=0ahUKEwjR0tnSkqOTAxV3JzQIHXaxMaYQ4dUDCBE&uact=5&oq=what+is+AdventureX+hackathon+china&gs_lp=Egxnd3Mtd2l6LXNlcnAiIndoYXQgaXMgQWR2ZW50dXJlWCBoYWNrYXRob24gY2hpbmEyBRAhGKABSMgVUJEDWMQUcAF4AJABAJgBtAGgAf8MqgEEMTAuNrgBA8gBAPgBAZgCEKAC6QzCAgoQABiwAxjWBBhHwgIIEAAYgAQYogTCAgUQABjvBcICBxAhGKABGAqYAwCIBgGQBgOSBwQxMC42oAfOMLIHAzkuNrgH5AzCBwQ0LjEyyAcXgAgA&sclient=gws-wiz-serp" target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="underline hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>AdventureX</a> (8K+ developers applied).</>,
         ].map((item, i) => (
           <div key={i} className="flex gap-2 leading-relaxed">
-            <span className="shrink-0 text-white/25">{i + 1}.</span>
+            <span className="shrink-0 text-black/70">{i + 1}.</span>
             <span>{item}</span>
           </div>
         ))}
@@ -1397,7 +1397,7 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
 
       {/* step 3 — GitHub contribution graph */}
       {step >= 3 && <div className="space-y-2">
-        <div className="text-white/30">
+        <div className="text-black/75">
           {"  "}@HS1CMU
         </div>
         <div className="pl-2"><ContribGraph data={contribData} /></div>
@@ -1405,8 +1405,8 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
 
       {/* step 4 — Fun Projects */}
       {step >= 4 && <div>
-        <div className="text-white/10 mb-2">  ─────────────────────────────────────────────────────────────</div>
-        <div className="text-white/30 mb-1">  FUN PROJECTS</div>
+        <div className="text-black/75 mb-2">  ─────────────────────────────────────────────────────────────</div>
+        <div className="text-black/75 mb-1">  FUN PROJECTS</div>
         <div className="space-y-0.5 pl-2" onMouseLeave={() => setHoveredRow(null)}>
           {[
             { id: "louvre_robbery_agent",  name: "Anyfend",            desc: "multi-modal agents simulating spatial heists for museum physical security" },
@@ -1425,15 +1425,15 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
               <span className="shrink-0 w-3 text-center inline-block">
                 {activeRow === i
                   ? <span className="text-[10px] opacity-80" style={{ color: ACCENT }}>𒀭</span>
-                  : <span className="text-white/25">·</span>}
+                  : <span className="text-black/70">·</span>}
               </span>
               <button
                 onClick={e => { e.stopPropagation(); onClickItem(`cat ${p.id}/README.md`); }}
-                className="text-white/70 hover:text-white transition-colors cursor-pointer shrink-0"
+                className="text-black/90 hover:text-black transition-colors cursor-pointer shrink-0"
               >
                 {p.name}
               </button>
-              <span className="text-white/25 truncate">— {p.desc}</span>
+              <span className="text-black/70 truncate">— {p.desc}</span>
             </div>
           ))}
         </div>
@@ -1441,7 +1441,7 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
 
       {/* step 5 — Arts */}
       {step >= 5 && <div onMouseLeave={() => setHoveredRow(null)}>
-        <div className="text-white/30 mb-1">  ARTS</div>
+        <div className="text-black/75 mb-1">  ARTS</div>
         <div className="space-y-1 pl-2">
           <div className="flex gap-2 leading-relaxed"
             onMouseEnter={() => setHoveredRow(10)}
@@ -1449,15 +1449,15 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
             <span className="shrink-0 w-3 text-center inline-block">
               {activeRow === 10
                 ? <span className="text-[10px] opacity-80" style={{ color: ACCENT }}>𒀭</span>
-                : <span className="text-white/25">·</span>}
+                : <span className="text-black/70">·</span>}
             </span>
             <span>
               <a href="https://www.hesun.art/" target="_blank" rel="noopener noreferrer"
                  onClick={e => e.stopPropagation()}
-                 className="hover:opacity-70 transition-colors text-white/70">
+                 className="hover:opacity-70 transition-colors text-black/90">
                 hesun.art
               </a>
-              <span className="text-white/40">{" — Metrical classical poetry in various forms. These works have received multiple provincial awards and nationwide recognition."}</span>
+              <span className="text-black/80">{" — Metrical classical poetry in various forms. These works have received multiple provincial awards and nationwide recognition."}</span>
             </span>
           </div>
         </div>
@@ -1465,44 +1465,44 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
 
       {/* step 6 — CONTACT */}
       {step >= 6 && <div>
-        <div className="text-white/30 mb-1">  CONTACT</div>
+        <div className="text-black/75 mb-1">  CONTACT</div>
         <div className="pl-2">
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 font-mono font-normal">
             <button
               type="button"
               onClick={e => { e.stopPropagation(); onClickItem("cat .coffee.txt"); }}
-              className="shrink-0 font-medium cursor-pointer bg-transparent border-0 p-0 text-[#08fff3] hover:text-[#b5fff9] transition-colors duration-150">
+              className="shrink-0 font-medium cursor-pointer bg-transparent border-0 p-0 text-black hover:text-black/85 transition-colors duration-150">
               Coffee
             </button>
             <a href="https://www.linkedin.com/in/heathsun/" target="_blank" rel="noopener noreferrer"
                onClick={e => e.stopPropagation()}
-               className="shrink-0 font-medium text-[#08fff3] hover:text-[#b5fff9] transition-colors duration-150">
+               className="shrink-0 font-medium text-black hover:text-black/85 transition-colors duration-150">
               LinkedIn
             </a>
-            <div className="flex flex-wrap items-center gap-x-4 text-white/50">
+            <div className="flex flex-wrap items-center gap-x-4 text-black/85">
               <a href="https://x.com/1HeathSun" target="_blank" rel="noopener noreferrer"
                  onClick={e => e.stopPropagation()}
-                 className="hover:text-white transition-colors duration-150">
+                 className="hover:text-black transition-colors duration-150">
                 X
               </a>
               <a href="https://www.youtube.com/@HeathSun" target="_blank" rel="noopener noreferrer"
                  onClick={e => e.stopPropagation()}
-                 className="hover:text-white transition-colors duration-150">
+                 className="hover:text-black transition-colors duration-150">
                 YouTube
               </a>
               <a href="https://github.com/HS1CMU" target="_blank" rel="noopener noreferrer"
                  onClick={e => e.stopPropagation()}
-                 className="hover:text-white transition-colors duration-150">
+                 className="hover:text-black transition-colors duration-150">
                 GitHub
               </a>
               <a href="https://www.instagram.com/heath_sun111/" target="_blank" rel="noopener noreferrer"
                  onClick={e => e.stopPropagation()}
-                 className="hover:text-white transition-colors duration-150">
+                 className="hover:text-black transition-colors duration-150">
                 Instagram
               </a>
               <a href="mailto:heathsun@cmu.edu"
                  onClick={e => e.stopPropagation()}
-                 className="hover:text-white transition-colors duration-150 truncate max-w-[min(100%,14rem)]">
+                 className="hover:text-black transition-colors duration-150 truncate max-w-[min(100%,14rem)]">
                 heathsun@cmu.edu
               </a>
             </div>
@@ -1512,7 +1512,7 @@ function BriefSection({ onClickItem }: { onClickItem: (cmd: string) => void }) {
 
       {/* step 7 — Command hint */}
       {step >= 7 && <div className="pl-2">
-        <div className="text-white/25">Type &apos;<button onClick={e => { e.stopPropagation(); onClickItem("help"); }} className="text-white hover:opacity-70 transition-opacity cursor-pointer">help</button>&apos; to see more commands...</div>
+        <div className="text-black/70">Type &apos;<button onClick={e => { e.stopPropagation(); onClickItem("help"); }} className="text-black hover:opacity-70 transition-opacity cursor-pointer">help</button>&apos; to see more commands...</div>
       </div>}
     </div>
   );
@@ -1532,21 +1532,21 @@ function DemoModal({
 
   return (
     <div
-      className="fixed inset-0 bg-black/85 z-[200] flex items-center justify-center p-4 backdrop-blur-sm"
+      className="fixed inset-0 bg-black/20 z-[200] flex items-center justify-center p-4 backdrop-blur-sm"
       onClick={onClose}
     >
       <div
-        className="bg-black border border-white/20 w-full max-w-2xl font-mono"
+        className="bg-white border border-black/20 w-full max-w-2xl font-mono"
         onClick={e => e.stopPropagation()}
       >
         {/* Modal header */}
-        <div className="border-b border-white/10 px-5 py-2.5 flex items-center justify-between text-xs">
-          <span className="text-white/40">
+        <div className="border-b border-black/10 px-5 py-2.5 flex items-center justify-between text-xs">
+          <span className="text-black/80">
             [DEMO] {"displayName" in project && project.displayName ? project.displayName : project.id.toUpperCase().replace(/_/g, " ")}
           </span>
           <button
             onClick={onClose}
-            className="text-white/30 hover:text-white transition-colors cursor-pointer"
+            className="text-black/75 hover:text-black transition-colors cursor-pointer"
           >
             ✕ close [esc]
           </button>
@@ -1554,7 +1554,7 @@ function DemoModal({
 
         {/* Video embed */}
         {project.videoUrl && (
-          <div className="aspect-video bg-black">
+          <div className="aspect-video bg-white">
             <iframe
               src={project.videoUrl}
               className="w-full h-full"
@@ -1565,13 +1565,13 @@ function DemoModal({
         )}
 
         {/* Footer links */}
-        <div className="border-t border-white/10 px-5 py-3 flex items-center gap-4 text-xs">
+        <div className="border-t border-black/10 px-5 py-3 flex items-center gap-4 text-xs">
           {project.liveUrl && (
             <a
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white/50 hover:text-white transition-colors"
+              className="text-black/85 hover:text-black transition-colors"
             >
               ↗ {project.liveLabel ?? "Open Live Demo"}
             </a>
@@ -1581,12 +1581,12 @@ function DemoModal({
               href={project.secondUrl as string}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white/50 hover:text-white transition-colors"
+              className="text-black/85 hover:text-black transition-colors"
             >
               ↗ {("secondLabel" in project && project.secondLabel) || "Link"}
             </a>
           )}
-          <span className="ml-auto text-white/20">{project.stack}</span>
+          <span className="ml-auto text-black/85">{project.stack}</span>
         </div>
       </div>
     </div>
